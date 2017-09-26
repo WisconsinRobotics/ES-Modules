@@ -53,6 +53,7 @@ static uint8_t address_g = 1;
 //Places data at head, increments head
 static void queue_enQueue(uint8_t data)
 {
+    j = 5; 
     byteQueue.dataArray[byteQueue.head] = data;
     byteQueue.head++;
     if(byteQueue.head == BYTE_ARRAY_SIZE)

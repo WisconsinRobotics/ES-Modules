@@ -25,6 +25,12 @@ int _numBits;
 uint16_t readTemperatureRaw();
 /**
  */
+
+struct SHT_data{
+    uint16_t _temperature;
+    uint16_t humidity;
+};
+
 uint8_t shiftIn(int _numBits)
 {
   uint8_t ret = 0;
@@ -213,7 +219,7 @@ float readTemperatureC()
 
   // Convert raw value to degrees Celsius
   _temperature = (_val * D2) + D1;
-
+  
   return (_temperature);
 }
 
@@ -293,67 +299,6 @@ uint16_t readTemperatureRaw()
 
   return (_val);
 }
-
-void innitiate(int iteration)
-{
-	if(iteration > 0)
-	{
-		PORTD |= (1<<PORTD0) | (1<<PORTD1) | (1<<PORTD2);
-		_delay_ms(500);
-		PORTD &= ~((1<<PORTD0) | (1<<PORTD1) | (1<<PORTD2));
-		_delay_ms(500);
-		innitiate(iteration - 1);
-	}
-}
-
-void display(float temp_c, float humidity)
-{
-	int _temp_c = (int)(temp_c);
-	int _humidity = (int)(humidity);
-	int c, k;
-	PORTD |= (1<<PORTD6);
-	for (c = 31; c >= 0; c--)
-	{
-		k = _temp_c >> c;
-		if (k & 1)
-		{
-			PORTB |= (1<<PORTB1);
-			_delay_ms(500);
-			PORTB &= ~(1<<PORTB1);
-			_delay_ms(500);
-		}
-		else
-		{
-			PORTB |= (1<<PORTB0);
-			_delay_ms(500);
-			PORTB &= ~(1<<PORTB0);
-			_delay_ms(500);
-		}
-	}
-	PORTD &= ~(1<<PORTD6);
-	DELAY;
-	PORTD |= (1<<PORTD7);
-	for (c = 31; c >= 0; c--)
-	{
-		k = _humidity >> c;
-		if (k & 1)
-		{
-			PORTB |= (1<<PORTB1);
-			_delay_ms(500);
-			PORTB &= ~(1<<PORTB1);
-			_delay_ms(500);
-		}
-		else
-		{
-			PORTB |= (1<<PORTB0);
-			_delay_ms(500);
-			PORTB &= ~(1<<PORTB0);
-			_delay_ms(500);
-		}
-	}
-	PORTD &= ~(1<<PORTD7);
-}
-
 int main(void)
 {
 	_delay_ms(20);
@@ -363,18 +308,6 @@ int main(void)
 	PORTC &= ~(1<<PORTC1);
 	i2c_init(77);
 	sei();
-// 	PORTD |= (1<<PORTD1);
-// 	_delay_ms(100);
-// 	PORTD &= ~(1<<PORTD1);
-// 	_delay_ms(100);
-// 	PORTD |= (1<<PORTD1);
-// 	_delay_ms(100);
-// 	PORTD &= ~(1<<PORTD1);
-// 	_delay_ms(100);	
-// 	PORTD |= (1<<PORTD1);
-// 	_delay_ms(100);
-// 	PORTD &= ~(1<<PORTD1);
-// 	_delay_ms(100);
 	int counter = 0;
 	struct packet receivedPacket;
 	struct packet returnPacket;
@@ -383,68 +316,50 @@ int main(void)
 	returnPacket.buffer[1] = 11;
 	returnPacket.buffer[2] = 11;
 	returnPacket.buffer[3] = 11;
-	
-
 		
     while (1) 
     {
-		tempC = (uint16_t)(readTemperatureC()*100);
-		returnPacket.cmd = GET_TEMP;
-		returnPacket.buffer[0] = (uint8_t) (tempC>>8);
-		returnPacket.buffer[1] = (uint8_t) (tempC);
 			
-		humidity = (uint16_t)(readHumidity()*100);
-		returnPacket.buffer[2] = (uint8_t) (humidity>>8);
-		returnPacket.buffer[3] = (uint8_t) (humidity);
-		i2c_setReturnPacket(&returnPacket, 4);
-
-		i2c_checkForPackets();
-		if(i2c_hasPacket())
+        i2c_checkForPackets();
+        i2c_setReturnPacket(&returnPacket, 2);
+        if(i2c_hasPacket())
 		{		
 			i2c_getPacket(&receivedPacket);
+			PORTD |= (1<<PORTD2);
 			switch(receivedPacket.cmd)
 			{	
 				case PING_ON:
 					PORTD |= (1<<PORTD1);
 					break;
+
 				case PING_OFF:
 					PORTD &= ~(1<<PORTD1);
 					break;	
 		
 				case GET_TEMP:
-					PORTD |= (1<<PORTD2);
-					_delay_ms(100);
-					PORTD &= ~(1<<PORTD2);
-					//DELAY;
-// 					tempC = (uint16_t)(readTemperatureC()*100);
-// 					PORTC &= ~(1<<PORTC1);
-// 					returnPacket.cmd = GET_TEMP;
-// 					returnPacket.buffer[0] = (uint8_t) (tempC);
-// 					returnPacket.buffer[1] = (uint8_t) (tempC>>8);
-// 					i2c_setReturnPacket(&returnPacket, 2);
-					break;
+ 				    tempC = (uint16_t)(readTemperatureC()*100);
+ 				    returnPacket.cmd = GET_TEMP;
+ 				    returnPacket.buffer[0] = (uint8_t) (tempC);
+ 				    returnPacket.buffer[1] = (uint8_t) (tempC>>8);
+				    break;
+
 				case GET_HUMID:
-					PORTD |= (1<<PORTD2);
-					_delay_ms(100);
-					PORTD &= ~(1<<PORTD2);
-					//DELAY;
-// 					humidity = (uint16_t)(readHumidity()*100);
-// 					PORTC &= ~(1<<PORTC1);
-// 					returnPacket.cmd = GET_HUMID;
-// 					returnPacket.buffer[0] = (uint8_t) (humidity);
-// 					returnPacket.buffer[1] = (uint8_t) (humidity>>8);
-// 					i2c_setReturnPacket(&returnPacket, 2);
-					break;
-// 				default:
-// 					PORTD ^= (1<<PORTD0);
-// 					break;
-			}
-		}
-		_delay_ms(1);
-		counter++;
-		if(counter>=1){
-			counter = 0;
-			PORTD ^= (1<<PORTD0);
-		}
+ 				    humidity = (uint16_t)(readHumidity()*100);
+ 				    returnPacket.cmd = GET_HUMID;
+ 				    returnPacket.buffer[0] = (uint8_t) (humidity);
+ 				    returnPacket.buffer[1] = (uint8_t) (humidity>>8);
+				    break;
+
+ 				default:
+ 					PORTD ^= (1<<PORTD0);
+ 					break;
+        	}
+        }
+       	_delay_ms(1);
+	    counter++;
+        if(counter>=1){
+            counter = 0;
+            PORTD ^= (1<<PORTD0);
+        }
     }
 }

@@ -10,10 +10,11 @@
 #define CLRCLK PORTC &= ~(1<<PORTC1)
 #define SETDTA PORTC |= (1<<PORTC0)
 #define CLRDTA PORTC &= ~(1<<PORTC0)
-#define GET_TEMP 0x03
-#define GET_HUMID 0x04
+#define GET_TEMP 0x04
+#define GET_HUMID 0x05
 #define PING_ON 0x01
 #define PING_OFF 0x02
+#define SOFT_RST 0x03
 #include <avr/io.h>
 #include <util/delay.h>
 #include "i2c_packet.h"

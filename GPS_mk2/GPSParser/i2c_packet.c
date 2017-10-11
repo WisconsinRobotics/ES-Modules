@@ -380,11 +380,11 @@ void i2c_checkForBusHogging()
 }
 
 
-void i2c_setReturnData(packet* returnPacket, uint32_t returnData){
-   returnPacket.buffer[0] = returnData >> 24;
-   returnPacket.buffer[1] = returnData >> 16;
-   returnPacket.buffer[2] = returnData >> 8;
-   returnPacket.buffer[3] = returnData;
+void i2c_setReturnData(struct packet* returnPacket, uint32_t returnData){
+   returnPacket->buffer[0] = returnData >> 24;
+   returnPacket->buffer[1] = returnData >> 16;
+   returnPacket->buffer[2] = returnData >> 8;
+   returnPacket->buffer[3] = returnData;
 }
 
 

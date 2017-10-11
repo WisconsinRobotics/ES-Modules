@@ -32,7 +32,7 @@ void i2c_checkForPackets();
 uint8_t i2c_hasPacket();
 uint8_t i2c_getPacket(struct packet *packetDestination);
 void i2c_setReturnPacket(const struct packet * const packetPointer, uint8_t numDataBytes);
-void i2c_setReturnData(packet * pkt_ptr, uint32_t returnData);
+void i2c_setReturnData(struct packet * pkt_ptr, uint32_t returnData);
 void i2c_checkForBusHogging();
 
 /****************************************************************************

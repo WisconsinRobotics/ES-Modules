@@ -30,12 +30,12 @@
 #define GET_SPEED 0x06
 #define GET_HEADING 0x07
 
-struct GPS_data {
+typedef struct GPS_data {
     uint32_t latitude;
     uint32_t longitude;
     uint32_t speed;
     uint32_t heading;
-};
+}GPS_data;
 
 
 void USART0Init(void) {
@@ -134,7 +134,7 @@ GPS_data GPSparse (char *message, GPS_data parsedData) {
         return parsedData;
 
     }
-    return 0;
+    return parsedData;
 }
 
 
@@ -205,7 +205,7 @@ int main(void) {
         }
 
         //parse the NMEA string for GPS data
-        GPS_data parsedData = GPSparse(NMEABuffer);
+        GPS_data parsedData = GPSparse(NMEABuffer, parsedData);
         
         //Set return data for master
         i2c_setReturnPacket(&returnPacket, 4);
@@ -223,21 +223,29 @@ int main(void) {
             //set buffer values depending on the requested data
             switch (receivedPacket.cmd) {
                 returnPacket.cmd = receivedPacket.cmd;
-            
+                
+                case PING_ON:
+					PORTB |= (1<<PORTB1);
+                    break;
+
+                case PING_OFF:
+					PORTB &= ~(1<<PORTB1);
+                    break; 
+
                 case GET_LAT:
-                    i2c_setReturnData(&returnPacket, GPS_data.latitude); 
+                    i2c_setReturnData(&returnPacket, parsedData.latitude); 
                     break;
 
                 case GET_LONG:
-                    i2c_setReturnData(&returnPacket, GPS_data.longitude); 
+                    i2c_setReturnData(&returnPacket, parsedData.longitude); 
                     break;
 
                 case GET_SPEED:
-                    i2c_setReturnData(&returnPacket, GPS_data.speed); 
+                    i2c_setReturnData(&returnPacket, parsedData.speed); 
                     break;
 
                 case GET_HEADING:
-                    i2c_setReturnData(&returnPacket, GPS_data.heading); 
+                    i2c_setReturnData(&returnPacket, parsedData.heading); 
                     break;
 
                 default:

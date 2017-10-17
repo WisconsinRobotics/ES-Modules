@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="8.2.2">
+<eagle version="8.3.1">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
+<setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
 <grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
@@ -59,6 +60,7 @@
 <layer number="96" name="Values" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="97" name="Info" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="98" name="Guide" color="6" fill="1" visible="yes" active="yes"/>
+<layer number="99" name="SpiceOrder" color="5" fill="1" visible="yes" active="yes"/>
 <layer number="100" name="Muster" color="7" fill="1" visible="no" active="no"/>
 <layer number="101" name="Patch_Top" color="12" fill="4" visible="no" active="yes"/>
 <layer number="102" name="Vscore" color="7" fill="1" visible="no" active="yes"/>
@@ -129,38 +131,38 @@
 <package name="SENSOR_MODULE_MK1">
 <wire x1="0.000321875" y1="37.098728125" x2="1.000321875" y2="38.098728125" width="0.127" layer="20" curve="-90"/>
 <wire x1="37.1" y1="38.1" x2="38.1" y2="37.1" width="0.127" layer="20" curve="-90"/>
-<smd name="PWRLED_ANODE" x="36.5973" y="36.83" dx="1.45" dy="1.4" layer="1" rot="R180"/>
-<smd name="PWRLED_CATHODE" x="34.4973" y="36.83" dx="1.45" dy="1.4" layer="1" rot="R180"/>
-<smd name="ALIVELED_ANODE" x="36.5973" y="34.29" dx="1.45" dy="1.4" layer="1" rot="R180"/>
-<smd name="ALIVELED_CATHODE" x="34.4973" y="34.29" dx="1.45" dy="1.4" layer="1" rot="R180"/>
-<smd name="PINGLED_ANODE" x="36.5973" y="31.75" dx="1.45" dy="1.4" layer="1" rot="R180"/>
-<smd name="PINGLED_CATHODE" x="34.4973" y="31.75" dx="1.45" dy="1.4" layer="1" rot="R180"/>
-<smd name="CMDLED_ANODE" x="36.5973" y="29.21" dx="1.45" dy="1.4" layer="1" rot="R180"/>
-<smd name="CMDLED_CATHODE" x="34.4973" y="29.21" dx="1.45" dy="1.4" layer="1" rot="R180"/>
-<text x="33.7947" y="36.83" size="1.016" layer="21" align="center-right">PWR</text>
-<text x="33.7947" y="34.29" size="1.016" layer="21" align="center-right">ALIVE</text>
-<text x="33.7947" y="31.75" size="1.016" layer="21" align="center-right">PING</text>
-<text x="33.7947" y="29.21" size="1.016" layer="21" align="center-right">CMD</text>
-<wire x1="35.2933" y1="33.782" x2="35.2933" y2="34.29" width="0.127" layer="21"/>
-<wire x1="35.2933" y1="34.29" x2="35.2933" y2="34.798" width="0.127" layer="21"/>
-<wire x1="35.2933" y1="31.242" x2="35.2933" y2="31.75" width="0.127" layer="21"/>
-<wire x1="35.2933" y1="31.75" x2="35.2933" y2="32.258" width="0.127" layer="21"/>
-<wire x1="35.2933" y1="28.702" x2="35.2933" y2="29.21" width="0.127" layer="21"/>
-<wire x1="35.2933" y1="29.21" x2="35.2933" y2="29.718" width="0.127" layer="21"/>
-<wire x1="35.2933" y1="36.83" x2="35.2933" y2="36.322" width="0.127" layer="21"/>
-<wire x1="35.2933" y1="36.83" x2="35.2933" y2="37.338" width="0.127" layer="21"/>
-<wire x1="35.8013" y1="36.322" x2="35.8013" y2="37.338" width="0.127" layer="21"/>
-<wire x1="35.8013" y1="28.702" x2="35.8013" y2="29.718" width="0.127" layer="21"/>
-<wire x1="35.8013" y1="31.242" x2="35.8013" y2="32.258" width="0.127" layer="21"/>
-<wire x1="35.8013" y1="33.782" x2="35.8013" y2="34.798" width="0.127" layer="21"/>
-<wire x1="35.8013" y1="33.782" x2="35.2933" y2="34.29" width="0.127" layer="21"/>
-<wire x1="35.2933" y1="34.29" x2="35.8013" y2="34.798" width="0.127" layer="21"/>
-<wire x1="35.8013" y1="31.242" x2="35.2933" y2="31.75" width="0.127" layer="21"/>
-<wire x1="35.8013" y1="32.258" x2="35.2933" y2="31.75" width="0.127" layer="21"/>
-<wire x1="35.8013" y1="28.702" x2="35.2933" y2="29.21" width="0.127" layer="21"/>
-<wire x1="35.2933" y1="29.21" x2="35.8013" y2="29.718" width="0.127" layer="21"/>
-<wire x1="35.8013" y1="36.322" x2="35.2933" y2="36.83" width="0.127" layer="21"/>
-<wire x1="35.2933" y1="36.83" x2="35.8013" y2="37.338" width="0.127" layer="21"/>
+<smd name="PWRLED_ANODE" x="36.3433" y="31.242" dx="1.45" dy="1.4" layer="1" rot="R180"/>
+<smd name="PWRLED_CATHODE" x="34.2433" y="31.242" dx="1.45" dy="1.4" layer="1" rot="R180"/>
+<smd name="ALIVELED_ANODE" x="36.3433" y="28.702" dx="1.45" dy="1.4" layer="1" rot="R180"/>
+<smd name="ALIVELED_CATHODE" x="34.2433" y="28.702" dx="1.45" dy="1.4" layer="1" rot="R180"/>
+<smd name="PINGLED_ANODE" x="36.3433" y="26.162" dx="1.45" dy="1.4" layer="1" rot="R180"/>
+<smd name="PINGLED_CATHODE" x="34.2433" y="26.162" dx="1.45" dy="1.4" layer="1" rot="R180"/>
+<smd name="CMDLED_ANODE" x="36.3433" y="23.622" dx="1.45" dy="1.4" layer="1" rot="R180"/>
+<smd name="CMDLED_CATHODE" x="34.2433" y="23.622" dx="1.45" dy="1.4" layer="1" rot="R180"/>
+<text x="33.5407" y="31.242" size="1.016" layer="21" align="center-right">PWR</text>
+<text x="33.5407" y="28.702" size="1.016" layer="21" align="center-right">ALIVE</text>
+<text x="33.5407" y="26.162" size="1.016" layer="21" align="center-right">PING</text>
+<text x="33.5407" y="23.622" size="1.016" layer="21" align="center-right">CMD</text>
+<wire x1="35.0393" y1="28.194" x2="35.0393" y2="28.702" width="0.127" layer="21"/>
+<wire x1="35.0393" y1="28.702" x2="35.0393" y2="29.21" width="0.127" layer="21"/>
+<wire x1="35.0393" y1="25.654" x2="35.0393" y2="26.162" width="0.127" layer="21"/>
+<wire x1="35.0393" y1="26.162" x2="35.0393" y2="26.67" width="0.127" layer="21"/>
+<wire x1="35.0393" y1="23.114" x2="35.0393" y2="23.622" width="0.127" layer="21"/>
+<wire x1="35.0393" y1="23.622" x2="35.0393" y2="24.13" width="0.127" layer="21"/>
+<wire x1="35.0393" y1="31.242" x2="35.0393" y2="30.734" width="0.127" layer="21"/>
+<wire x1="35.0393" y1="31.242" x2="35.0393" y2="31.75" width="0.127" layer="21"/>
+<wire x1="35.5473" y1="30.734" x2="35.5473" y2="31.75" width="0.127" layer="21"/>
+<wire x1="35.5473" y1="23.114" x2="35.5473" y2="24.13" width="0.127" layer="21"/>
+<wire x1="35.5473" y1="25.654" x2="35.5473" y2="26.67" width="0.127" layer="21"/>
+<wire x1="35.5473" y1="28.194" x2="35.5473" y2="29.21" width="0.127" layer="21"/>
+<wire x1="35.5473" y1="28.194" x2="35.0393" y2="28.702" width="0.127" layer="21"/>
+<wire x1="35.0393" y1="28.702" x2="35.5473" y2="29.21" width="0.127" layer="21"/>
+<wire x1="35.5473" y1="25.654" x2="35.0393" y2="26.162" width="0.127" layer="21"/>
+<wire x1="35.5473" y1="26.67" x2="35.0393" y2="26.162" width="0.127" layer="21"/>
+<wire x1="35.5473" y1="23.114" x2="35.0393" y2="23.622" width="0.127" layer="21"/>
+<wire x1="35.0393" y1="23.622" x2="35.5473" y2="24.13" width="0.127" layer="21"/>
+<wire x1="35.5473" y1="30.734" x2="35.0393" y2="31.242" width="0.127" layer="21"/>
+<wire x1="35.0393" y1="31.242" x2="35.5473" y2="31.75" width="0.127" layer="21"/>
 <wire x1="38.099678125" y1="1.00761875" x2="37.12" y2="0" width="0.127" layer="20" curve="-90"/>
 <wire x1="1" y1="0" x2="0" y2="1" width="0.127" layer="20" curve="-90"/>
 <pad name="GND" x="15.24" y="31.75" drill="0.9" shape="square"/>
@@ -171,12 +173,14 @@
 <pad name="SCL" x="20.32" y="31.75" drill="0.9"/>
 <pad name="SDA" x="17.78" y="31.75" drill="0.9"/>
 <pad name="C" x="15.24" y="34.29" drill="0.9"/>
-<hole x="1.27" y="1.27" drill="1"/>
-<hole x="36.83" y="1.27" drill="1"/>
+<hole x="2.794" y="2.794" drill="3.7973"/>
+<hole x="35.306" y="2.794" drill="3.7973"/>
 <wire x1="0" y1="37.1" x2="0" y2="1" width="0.127" layer="20"/>
 <wire x1="1" y1="0" x2="37.1" y2="0" width="0.127" layer="20"/>
 <wire x1="38.1" y1="1" x2="38.1" y2="37.1" width="0.127" layer="20"/>
 <wire x1="37.1" y1="38.1" x2="1" y2="38.1" width="0.127" layer="20"/>
+<hole x="2.794" y="35.306" drill="3.7973"/>
+<hole x="35.306" y="35.306" drill="3.7973"/>
 </package>
 <package name="U_INS">
 <smd name="GND1" x="1.27" y="1.27" dx="1.27" dy="0.635" layer="1"/>
@@ -1012,13 +1016,13 @@ scheme "Mk1", "Mk2", "Mk3", etc</text>
 <parts>
 <part name="U$1" library="000_CustomPartsMaster" deviceset="SENSOR_MODULE_MK1" device=""/>
 <part name="U_INS" library="000_CustomPartsMaster" deviceset="U_INS" device=""/>
-<part name="U$3" library="000_CustomPartsMaster" deviceset="CAPACITOR-UNPOLARIZED" device="0805"/>
+<part name="U$3" library="000_CustomPartsMaster" deviceset="CAPACITOR-UNPOLARIZED" device="0805" value="100nF"/>
 <part name="U$4" library="000_CustomPartsMaster" deviceset="ATMEGA328" device="TQFP32-08"/>
 <part name="U$5" library="000_CustomPartsMaster" deviceset="6PIN-HEADER" device="2X3"/>
-<part name="U$6" library="000_CustomPartsMaster" deviceset="RESISTOR" device=""/>
-<part name="U$7" library="000_CustomPartsMaster" deviceset="RESISTOR" device=""/>
-<part name="U$8" library="000_CustomPartsMaster" deviceset="RESISTOR" device=""/>
-<part name="U$9" library="000_CustomPartsMaster" deviceset="RESISTOR" device=""/>
+<part name="U$6" library="000_CustomPartsMaster" deviceset="RESISTOR" device="" value="10k"/>
+<part name="U$7" library="000_CustomPartsMaster" deviceset="RESISTOR" device="" value="10k"/>
+<part name="U$8" library="000_CustomPartsMaster" deviceset="RESISTOR" device="" value="10k"/>
+<part name="U$9" library="000_CustomPartsMaster" deviceset="RESISTOR" device="" value="10k"/>
 <part name="U$10" library="000_CustomPartsMaster" deviceset="RESISTOR" device=""/>
 <part name="U$11" library="000_CustomPartsMaster" deviceset="CAPACITOR-UNPOLARIZED" device="0805"/>
 <part name="U$12" library="000_CustomPartsMaster" deviceset="CAPACITOR-UNPOLARIZED" device="0805"/>

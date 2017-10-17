@@ -433,11 +433,8 @@ ISR( TWI_vect )
     case TWIQUEUE_STX_DATA_ACK:           		// Data byte in TWDR has been transmitted; ACK has been received
 		 TWDR = *slaveDataToReturnCurrent;
 		 slaveDataToReturnCurrent++;
-         uint8_t delay = 100;
-         for(uint8_t i = 0; i < delay; i++){
-            //delay between register writes
-         }  
-      	 TWCR = (1<<TWEN)|                      // queue Interface enabled
+      	 _delay_us(10); 
+         TWCR = (1<<TWEN)|                      // queue Interface enabled
              (1<<TWIE)|(1<<TWINT)|				// Enable queue Interupt and clear the flag to send byte
              (1<<TWEA)|(0<<TWSTA)|(0<<TWSTO)|	// 
              (0<<TWWC);							//

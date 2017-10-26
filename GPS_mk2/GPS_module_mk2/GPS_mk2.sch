@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="8.3.2">
+<eagle version="8.4.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -642,6 +642,8 @@ Source: http://pdfserv.maxim-ic.com/en/ds/MAX3222-MAX3241.pdf</description>
 <pad name="3P3V@4" x="6.35" y="30.48" drill="1.1" diameter="1.778" rot="R270"/>
 <pad name="SCK" x="3.81" y="27.94" drill="1.1" diameter="1.778" rot="R270"/>
 <pad name="RESET@2" x="3.81" y="25.4" drill="1.1" diameter="1.778" rot="R270"/>
+<text x="6.35" y="36.195" size="1.27" layer="21">&gt;Name</text>
+<text x="6.35" y="34.29" size="1.27" layer="21">&gt;Value</text>
 </package>
 <package name="TQFP32-08">
 <description>&lt;B&gt;Thin Plasic Quad Flat Package&lt;/B&gt; Grid 0.8 mm</description>
@@ -1123,7 +1125,7 @@ we're sticking to a standardized 4-pin connection for most things.</text>
 <part name="IC1" library="maxim" library_urn="urn:adsk.eagle:library:269" deviceset="MAX3232*" device="SE" package3d_urn="urn:adsk.eagle:package:17517/1" technology="C"/>
 <part name="C1" library="000_CustomPartsMaster" deviceset="CAPACITOR-UNPOLARIZED" device="0805"/>
 <part name="C2" library="000_CustomPartsMaster" deviceset="CAPACITOR-UNPOLARIZED" device="0805"/>
-<part name="GPS_MK2" library="000_CustomPartsMaster" deviceset="SENSOR_MODULE_MK1" device=""/>
+<part name="GPS" library="000_CustomPartsMaster" deviceset="SENSOR_MODULE_MK1" device="" value="MK2"/>
 <part name="U$4" library="000_CustomPartsMaster" deviceset="ATMEGA328" device="TQFP32-08"/>
 <part name="U$1" library="000_CustomPartsMaster" deviceset="RESISTOR" device=""/>
 <part name="U$2" library="000_CustomPartsMaster" deviceset="RESISTOR" device=""/>
@@ -1144,7 +1146,7 @@ we're sticking to a standardized 4-pin connection for most things.</text>
 <instance part="IC1" gate="G$1" x="20.32" y="152.4"/>
 <instance part="C1" gate="G$1" x="-2.54" y="165.1" rot="R90"/>
 <instance part="C2" gate="G$1" x="-2.54" y="154.94" rot="R270"/>
-<instance part="GPS_MK2" gate="G$1" x="81.28" y="48.26"/>
+<instance part="GPS" gate="G$1" x="81.28" y="48.26"/>
 <instance part="U$4" gate="G$1" x="-55.88" y="142.24" rot="R180"/>
 <instance part="U$1" gate="G$1" x="78.74" y="175.26" rot="R90"/>
 <instance part="U$2" gate="G$1" x="78.74" y="160.02" rot="R90"/>
@@ -1195,7 +1197,7 @@ we're sticking to a standardized 4-pin connection for most things.</text>
 </net>
 <net name="3P3V" class="0">
 <segment>
-<pinref part="GPS_MK2" gate="G$1" pin="3P3PV@1"/>
+<pinref part="GPS" gate="G$1" pin="3P3PV@1"/>
 <wire x1="101.6" y1="111.76" x2="96.52" y2="111.76" width="0.1524" layer="91"/>
 <label x="96.52" y="111.76" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
@@ -1247,14 +1249,14 @@ we're sticking to a standardized 4-pin connection for most things.</text>
 <label x="-38.1" y="116.84" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="GPS_MK2" gate="G$1" pin="3P3V@3"/>
+<pinref part="GPS" gate="G$1" pin="3P3V@3"/>
 <wire x1="101.6" y1="25.4" x2="91.44" y2="25.4" width="0.1524" layer="91"/>
 <label x="91.44" y="25.4" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="GND" class="0">
 <segment>
-<pinref part="GPS_MK2" gate="G$1" pin="GND@1"/>
+<pinref part="GPS" gate="G$1" pin="GND@1"/>
 <wire x1="101.6" y1="109.22" x2="96.52" y2="109.22" width="0.1524" layer="91"/>
 <label x="96.52" y="109.22" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
@@ -1278,13 +1280,13 @@ we're sticking to a standardized 4-pin connection for most things.</text>
 <junction x="-27.94" y="203.2"/>
 </segment>
 <segment>
-<pinref part="GPS_MK2" gate="G$1" pin="PWRLED_CATHODE"/>
-<pinref part="GPS_MK2" gate="G$1" pin="ALIVELED_CATHODE"/>
+<pinref part="GPS" gate="G$1" pin="PWRLED_CATHODE"/>
+<pinref part="GPS" gate="G$1" pin="ALIVELED_CATHODE"/>
 <wire x1="101.6" y1="175.26" x2="101.6" y2="160.02" width="0.1524" layer="91"/>
-<pinref part="GPS_MK2" gate="G$1" pin="PINGLED_CATHODE"/>
+<pinref part="GPS" gate="G$1" pin="PINGLED_CATHODE"/>
 <wire x1="101.6" y1="160.02" x2="101.6" y2="144.78" width="0.1524" layer="91"/>
 <junction x="101.6" y="160.02"/>
-<pinref part="GPS_MK2" gate="G$1" pin="CMDLED_CATHODE"/>
+<pinref part="GPS" gate="G$1" pin="CMDLED_CATHODE"/>
 <wire x1="101.6" y1="129.54" x2="101.6" y2="144.78" width="0.1524" layer="91"/>
 <junction x="101.6" y="144.78"/>
 <wire x1="101.6" y1="129.54" x2="101.6" y2="124.46" width="0.1524" layer="91"/>
@@ -1313,14 +1315,14 @@ we're sticking to a standardized 4-pin connection for most things.</text>
 <label x="50.8" y="165.1" size="1.778" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="GPS_MK2" gate="G$1" pin="GND@3"/>
+<pinref part="GPS" gate="G$1" pin="GND@3"/>
 <wire x1="101.6" y1="12.7" x2="91.44" y2="12.7" width="0.1524" layer="91"/>
 <label x="91.44" y="12.7" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="RESET" class="0">
 <segment>
-<pinref part="GPS_MK2" gate="G$1" pin="!RESET"/>
+<pinref part="GPS" gate="G$1" pin="!RESET"/>
 <wire x1="101.6" y1="96.52" x2="99.06" y2="96.52" width="0.1524" layer="91"/>
 <label x="88.9" y="96.52" size="1.778" layer="95"/>
 <pinref part="R1" gate="G$1" pin="P$2"/>
@@ -1334,14 +1336,14 @@ we're sticking to a standardized 4-pin connection for most things.</text>
 <label x="-35.56" y="160.02" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="GPS_MK2" gate="G$1" pin="RESET"/>
+<pinref part="GPS" gate="G$1" pin="RESET"/>
 <wire x1="101.6" y1="15.24" x2="91.44" y2="15.24" width="0.1524" layer="91"/>
 <label x="91.44" y="15.24" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="SCL" class="0">
 <segment>
-<pinref part="GPS_MK2" gate="G$1" pin="SCL"/>
+<pinref part="GPS" gate="G$1" pin="SCL"/>
 <wire x1="101.6" y1="73.66" x2="88.9" y2="73.66" width="0.1524" layer="91"/>
 <label x="88.9" y="73.66" size="1.778" layer="95"/>
 </segment>
@@ -1354,28 +1356,28 @@ we're sticking to a standardized 4-pin connection for most things.</text>
 <net name="N$7" class="0">
 <segment>
 <pinref part="U$2" gate="G$1" pin="P$2"/>
-<pinref part="GPS_MK2" gate="G$1" pin="ALIVELED_ANODE"/>
+<pinref part="GPS" gate="G$1" pin="ALIVELED_ANODE"/>
 <wire x1="83.82" y1="160.02" x2="88.9" y2="160.02" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$8" class="0">
 <segment>
 <pinref part="U$1" gate="G$1" pin="P$2"/>
-<pinref part="GPS_MK2" gate="G$1" pin="PWRLED_ANODE"/>
+<pinref part="GPS" gate="G$1" pin="PWRLED_ANODE"/>
 <wire x1="83.82" y1="175.26" x2="88.9" y2="175.26" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$9" class="0">
 <segment>
 <pinref part="U$5" gate="G$1" pin="P$2"/>
-<pinref part="GPS_MK2" gate="G$1" pin="PINGLED_ANODE"/>
+<pinref part="GPS" gate="G$1" pin="PINGLED_ANODE"/>
 <wire x1="83.82" y1="144.78" x2="88.9" y2="144.78" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$10" class="0">
 <segment>
 <pinref part="U$6" gate="G$1" pin="P$2"/>
-<pinref part="GPS_MK2" gate="G$1" pin="CMDLED_ANODE"/>
+<pinref part="GPS" gate="G$1" pin="CMDLED_ANODE"/>
 <wire x1="83.82" y1="129.54" x2="88.9" y2="129.54" width="0.1524" layer="91"/>
 </segment>
 </net>
@@ -1446,7 +1448,7 @@ we're sticking to a standardized 4-pin connection for most things.</text>
 <label x="43.18" y="144.78" size="1.778" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="GPS_MK2" gate="G$1" pin="DATA0/SDA/TX"/>
+<pinref part="GPS" gate="G$1" pin="DATA0/SDA/TX"/>
 <wire x1="101.6" y1="43.18" x2="91.44" y2="43.18" width="0.1524" layer="91"/>
 <label x="91.44" y="43.18" size="1.778" layer="95"/>
 </segment>
@@ -1458,7 +1460,7 @@ we're sticking to a standardized 4-pin connection for most things.</text>
 <label x="43.18" y="139.7" size="1.778" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="GPS_MK2" gate="G$1" pin="DATA1/SCL/RX"/>
+<pinref part="GPS" gate="G$1" pin="DATA1/SCL/RX"/>
 <wire x1="101.6" y1="40.64" x2="91.44" y2="40.64" width="0.1524" layer="91"/>
 <label x="91.44" y="40.64" size="1.778" layer="95"/>
 </segment>
@@ -1486,7 +1488,7 @@ we're sticking to a standardized 4-pin connection for most things.</text>
 <label x="-38.1" y="129.54" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="GPS_MK2" gate="G$1" pin="MOSI"/>
+<pinref part="GPS" gate="G$1" pin="MOSI"/>
 <wire x1="101.6" y1="20.32" x2="91.44" y2="20.32" width="0.1524" layer="91"/>
 <label x="91.44" y="20.32" size="1.778" layer="95"/>
 </segment>
@@ -1498,7 +1500,7 @@ we're sticking to a standardized 4-pin connection for most things.</text>
 <label x="-38.1" y="132.08" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="GPS_MK2" gate="G$1" pin="MISO"/>
+<pinref part="GPS" gate="G$1" pin="MISO"/>
 <wire x1="101.6" y1="22.86" x2="91.44" y2="22.86" width="0.1524" layer="91"/>
 <label x="91.44" y="22.86" size="1.778" layer="95"/>
 </segment>
@@ -1510,7 +1512,7 @@ we're sticking to a standardized 4-pin connection for most things.</text>
 <label x="-38.1" y="134.62" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="GPS_MK2" gate="G$1" pin="SCK"/>
+<pinref part="GPS" gate="G$1" pin="SCK"/>
 <wire x1="101.6" y1="17.78" x2="91.44" y2="17.78" width="0.1524" layer="91"/>
 <label x="91.44" y="17.78" size="1.778" layer="95"/>
 </segment>
@@ -1522,7 +1524,7 @@ we're sticking to a standardized 4-pin connection for most things.</text>
 <label x="-38.1" y="154.94" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="GPS_MK2" gate="G$1" pin="SDA"/>
+<pinref part="GPS" gate="G$1" pin="SDA"/>
 <wire x1="101.6" y1="76.2" x2="88.9" y2="76.2" width="0.1524" layer="91"/>
 <label x="88.9" y="76.2" size="1.778" layer="95"/>
 </segment>

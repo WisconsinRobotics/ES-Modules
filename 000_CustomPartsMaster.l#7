@@ -7,10 +7,22 @@
 <setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="50" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="5" altunitdist="mil" altunit="mil"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="yes"/>
+<layer number="3" name="Route3" color="4" fill="3" visible="no" active="no"/>
+<layer number="4" name="Route4" color="1" fill="4" visible="no" active="no"/>
+<layer number="5" name="Route5" color="4" fill="4" visible="no" active="no"/>
+<layer number="6" name="Route6" color="1" fill="8" visible="no" active="no"/>
+<layer number="7" name="Route7" color="4" fill="8" visible="no" active="no"/>
+<layer number="8" name="Route8" color="1" fill="2" visible="no" active="no"/>
+<layer number="9" name="Route9" color="4" fill="2" visible="no" active="no"/>
+<layer number="10" name="Route10" color="1" fill="7" visible="no" active="no"/>
+<layer number="11" name="Route11" color="4" fill="7" visible="no" active="no"/>
+<layer number="12" name="Route12" color="1" fill="5" visible="no" active="no"/>
+<layer number="13" name="Route13" color="4" fill="5" visible="no" active="no"/>
+<layer number="14" name="Route14" color="1" fill="6" visible="no" active="no"/>
 <layer number="15" name="Route15" color="4" fill="6" visible="no" active="yes"/>
 <layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
 <layer number="17" name="Pads" color="2" fill="1" visible="yes" active="yes"/>
@@ -3211,6 +3223,13 @@ Front side of the board.</text>
 <pad name="3P3V@3" x="29.208" y="9.597" drill="1.02" rot="R90"/>
 <hole x="33.528" y="16.447" drill="3"/>
 <hole x="33.528" y="11.747" drill="3"/>
+<pad name="P1" x="3.81" y="30.48" drill="1.1" diameter="1.778" shape="square" rot="R270"/>
+<pad name="P2" x="6.35" y="27.94" drill="1.1" diameter="1.778" rot="R270"/>
+<pad name="P3" x="6.35" y="25.4" drill="1.1" diameter="1.778" rot="R270"/>
+<pad name="P4" x="6.35" y="30.48" drill="1.1" diameter="1.778" rot="R270"/>
+<pad name="P5" x="3.81" y="27.94" drill="1.1" diameter="1.778" rot="R270"/>
+<pad name="P6" x="3.81" y="25.4" drill="1.1" diameter="1.778" rot="R270"/>
+<attribute name="VALUE" x="17.526" y="25.146" size="1.27" layer="27"/>
 </package>
 <package name="U_INS">
 <smd name="GND1" x="1.27" y="1.27" dx="1.27" dy="0.635" layer="1"/>
@@ -4972,7 +4991,7 @@ tdead = 6us</text>
 <text x="-12.7" y="60.96" size="1.778" layer="96">&gt;VALUE</text>
 </symbol>
 <symbol name="SENSOR_MODULE_MK1">
-<pin name="3.3V" x="20.32" y="63.5" visible="pin" length="middle"/>
+<pin name="3P3PV@1" x="20.32" y="63.5" visible="pin" length="middle"/>
 <pin name="GND@1" x="20.32" y="60.96" visible="pin" length="middle"/>
 <pin name="!RESET" x="20.32" y="48.26" visible="pin" length="middle"/>
 <pin name="SDA" x="20.32" y="27.94" visible="pin" length="middle"/>
@@ -5118,12 +5137,12 @@ scheme "Mk1", "Mk2", "Mk3", etc</text>
 <wire x1="25.4" y1="175.26" x2="25.4" y2="142.24" width="0.254" layer="94"/>
 <wire x1="25.4" y1="142.24" x2="25.4" y2="137.16" width="0.254" layer="94"/>
 <wire x1="111.76" y1="142.24" x2="129.54" y2="142.24" width="0.254" layer="94" style="longdash"/>
-<wire x1="129.54" y1="142.24" x2="129.54" y2="-17.78" width="0.254" layer="94" style="longdash"/>
-<wire x1="129.54" y1="-17.78" x2="22.86" y2="-17.78" width="0.254" layer="94" style="longdash"/>
-<wire x1="22.86" y1="-17.78" x2="22.86" y2="-12.7" width="0.254" layer="94" style="longdash"/>
+<wire x1="129.54" y1="142.24" x2="129.54" y2="-48.26" width="0.254" layer="94" style="longdash"/>
+<wire x1="129.54" y1="-48.26" x2="22.86" y2="-48.26" width="0.254" layer="94" style="longdash"/>
+<wire x1="22.86" y1="-48.26" x2="22.86" y2="-43.18" width="0.254" layer="94" style="longdash"/>
 <wire x1="22.86" y1="134.62" x2="22.86" y2="142.24" width="0.254" layer="94" style="longdash"/>
 <wire x1="22.86" y1="142.24" x2="25.4" y2="142.24" width="0.254" layer="94" style="longdash"/>
-<pin name="3P3V" x="20.32" y="-2.54" visible="pin" length="middle"/>
+<pin name="3P3V@2" x="20.32" y="-2.54" visible="pin" length="middle"/>
 <pin name="DATA0/SDA/TX" x="20.32" y="-5.08" visible="pin" length="middle"/>
 <pin name="DATA1/SCL/RX" x="20.32" y="-7.62" visible="pin" length="middle"/>
 <text x="46.609" y="-11.43" size="1.778" layer="94">These are the connections for the the actual sensors 
@@ -5132,10 +5151,22 @@ While some sensors may use more pins than others,
 we're sticking to a standardized 4-pin connection for most things.</text>
 <wire x1="25.4" y1="2.54" x2="124.46" y2="2.54" width="0.254" layer="94"/>
 <wire x1="124.46" y1="2.54" x2="124.46" y2="-15.24" width="0.254" layer="94"/>
-<wire x1="124.46" y1="-15.24" x2="25.4" y2="-15.24" width="0.254" layer="94"/>
 <wire x1="25.4" y1="-15.24" x2="25.4" y2="2.54" width="0.254" layer="94"/>
 <text x="27.94" y="0" size="1.778" layer="94">Extra Signals</text>
 <pin name="GND@2" x="20.32" y="-10.16" visible="pin" length="middle"/>
+<wire x1="124.46" y1="-15.24" x2="25.4" y2="-15.24" width="0.254" layer="94"/>
+<wire x1="124.46" y1="-40.64" x2="25.4" y2="-40.64" width="0.254" layer="94"/>
+<wire x1="25.4" y1="-17.78" x2="124.46" y2="-17.78" width="0.254" layer="94"/>
+<wire x1="25.4" y1="-17.78" x2="25.4" y2="-40.64" width="0.254" layer="94"/>
+<wire x1="124.46" y1="-17.78" x2="124.46" y2="-40.64" width="0.254" layer="94"/>
+<pin name="3P3V@3" x="20.32" y="-22.86" visible="pin" length="middle"/>
+<pin name="MISO" x="20.32" y="-25.4" visible="pin" length="middle"/>
+<pin name="MOSI" x="20.32" y="-27.94" visible="pin" length="middle"/>
+<pin name="SCK" x="20.32" y="-30.48" visible="pin" length="middle"/>
+<pin name="RESET" x="20.32" y="-33.02" visible="pin" length="middle"/>
+<pin name="GND@3" x="20.32" y="-35.56" visible="pin" length="middle"/>
+<text x="27.94" y="-20.32" size="1.778" layer="94">ISP Header</text>
+<text x="44.069" y="-24.13" size="1.778" layer="94">These are the programming pins for the AVR.</text>
 </symbol>
 <symbol name="U_INS">
 <pin name="GND1" x="-25.4" y="-15.24" visible="pin" length="middle"/>
@@ -7177,8 +7208,8 @@ we're sticking to a standardized 4-pin connection for most things.</text>
 <device name="" package="SENSOR_MODULE_MK1">
 <connects>
 <connect gate="G$1" pin="!RESET" pad="RESET"/>
-<connect gate="G$1" pin="3.3V" pad="3P3V@1"/>
-<connect gate="G$1" pin="3P3V" pad="3P3V@2 3P3V@3"/>
+<connect gate="G$1" pin="3P3PV@1" pad="3P3V@1"/>
+<connect gate="G$1" pin="3P3V@2" pad="3P3V@2 3P3V@3"/>
 <connect gate="G$1" pin="ALIVELED_ANODE" pad="ALIVELED_ANODE"/>
 <connect gate="G$1" pin="ALIVELED_CATHODE" pad="ALIVELED_CATHODE"/>
 <connect gate="G$1" pin="CMDLED_ANODE" pad="CMDLED_ANODE"/>

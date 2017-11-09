@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="8.4.0">
+<eagle version="8.3.2">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -3068,7 +3068,7 @@ Front side of the board.</text>
 <text x="63.5" y="12.7" size="1.778" layer="25" rot="R90" align="center-left">&gt;NAME</text>
 <text x="58.42" y="12.7" size="1.778" layer="27" rot="R90" align="center-left">&gt;VALUE</text>
 </package>
-<package name="SENSOR_MODULE_MK1">
+<package name="SENSOR_MODULE_MK2">
 <wire x1="0.000321875" y1="37.098728125" x2="1.000321875" y2="38.098728125" width="0.127" layer="20" curve="-90"/>
 <wire x1="37.1" y1="38.1" x2="38.1" y2="37.1" width="0.127" layer="20" curve="-90"/>
 <smd name="PWRLED_ANODE" x="36.3433" y="31.242" dx="1.45" dy="1.4" layer="1" rot="R180"/>
@@ -3139,8 +3139,6 @@ Front side of the board.</text>
 <pad name="3P3V@4" x="6.35" y="30.48" drill="1.1" diameter="1.778" rot="R270"/>
 <pad name="SCK" x="3.81" y="27.94" drill="1.1" diameter="1.778" rot="R270"/>
 <pad name="RESET@2" x="3.81" y="25.4" drill="1.1" diameter="1.778" rot="R270"/>
-<text x="6.35" y="36.195" size="1.27" layer="21">&gt;Name</text>
-<text x="6.35" y="34.29" size="1.27" layer="21">&gt;Value</text>
 </package>
 <package name="U_INS">
 <smd name="GND1" x="1.27" y="1.27" dx="1.27" dy="0.635" layer="1"/>
@@ -4901,7 +4899,7 @@ tdead = 6us</text>
 <text x="-12.7" y="63.5" size="1.778" layer="95">&gt;NAME</text>
 <text x="-12.7" y="60.96" size="1.778" layer="96">&gt;VALUE</text>
 </symbol>
-<symbol name="SENSOR_MODULE_MK1">
+<symbol name="SENSOR_MODULE_MK2">
 <pin name="3P3PV@1" x="20.32" y="63.5" visible="pin" length="middle"/>
 <pin name="GND@1" x="20.32" y="60.96" visible="pin" length="middle"/>
 <pin name="!RESET" x="20.32" y="48.26" visible="pin" length="middle"/>
@@ -7111,12 +7109,12 @@ we're sticking to a standardized 4-pin connection for most things.</text>
 </device>
 </devices>
 </deviceset>
-<deviceset name="SENSOR_MODULE_MK1">
+<deviceset name="SENSOR_MODULE_MK2">
 <gates>
-<gate name="G$1" symbol="SENSOR_MODULE_MK1" x="0" y="0"/>
+<gate name="G$1" symbol="SENSOR_MODULE_MK2" x="0" y="0"/>
 </gates>
 <devices>
-<device name="" package="SENSOR_MODULE_MK1">
+<device name="" package="SENSOR_MODULE_MK2">
 <connects>
 <connect gate="G$1" pin="!RESET" pad="RESET@1"/>
 <connect gate="G$1" pin="3P3PV@1" pad="3P3V@1"/>

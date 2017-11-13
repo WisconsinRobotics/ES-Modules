@@ -35,7 +35,7 @@ typedef struct GPS_data {
     uint32_t longitude;
     uint32_t speed;
     uint32_t heading;
-}GPS_data;
+} GPS_data;
 
 
 void USART0Init(void) {
@@ -169,45 +169,47 @@ int main(void) {
     i2c_setReturnPacket(&returnPacket, 4);
 
     //various counters
-    uint8_t alive_counter = 0;
+    uint16_t alive_counter = 0;
     uint8_t cmd_counter = 0;
     uint8_t valid_rmc = 0;
+
 
     while (1) {
         
         //Cycle until a complete, valid RMC message is recieved
-        valid_rmc = 0;
-        while (!valid_rmc) {
-            
-            //receive serial byte from sensor 
-            recvByte = USART0ReceiveByte();
-            
-            //Dump characters until a start byte is found
-            while (recvByte != '$') 
-                recvByte = USART0ReceiveByte();
-            
-            //Read bytes from sensor until reaching the end of string
-            for (int i = 0; i < 100; i++) {
-                NMEABuffer[i] = recvByte;
-                if (recvByte == '\n')  
-                    break;
-                recvByte = USART0ReceiveByte();
-            }
-            
-            //The first characters of the string are the message type
-            char messageType[7];
-            messageType[6] = '\0';  //c strings need this 
-            memcpy(messageType, NMEABuffer, 6 * sizeof(char));
-
-            //If the message type is GPRMC, message is valid, exit while loop
-            if (strcmp(messageType, "$GPRMC") == 0 ) 
-                valid_rmc = 1; 
-        }
+//        valid_rmc = 0;
+//        while (!valid_rmc) {
+//
+//            //receive serial byte from sensor
+//            recvByte = USART0ReceiveByte();
+//
+//            //Dump characters until a start byte is found
+//            while (recvByte != '$')
+//                recvByte = USART0ReceiveByte();
+//
+//            //Read bytes from sensor until reaching the end of string
+//            for (int i = 0; i < 100; i++) {
+//                NMEABuffer[i] = recvByte;
+//                if (recvByte == '\n')
+//                    break;
+//                recvByte = USART0ReceiveByte();
+//            }
+//
+//            //The first characters of the string are the message type
+//            char messageType[7];
+//            messageType[6] = '\0';  //c strings need this
+//            memcpy(messageType, NMEABuffer, 6 * sizeof(char));
+//
+//            //If the message type is GPRMC, message is valid, exit while loop
+//            if (strcmp(messageType, "$GPRMC") == 0 )
+//                valid_rmc = 1;
+//        }
 
         //parse the NMEA string for GPS data
-        GPS_data parsedData = GPSparse(NMEABuffer, parsedData);
+        //GPS_data parsedData = GPSparse(NMEABuffer, parsedData);
         
         //Set return data for master
+
         i2c_setReturnPacket(&returnPacket, 4);
 
         //Check for requests from master
@@ -233,19 +235,23 @@ int main(void) {
                     break; 
 
                 case GET_LAT:
-                    i2c_setReturnData(&returnPacket, parsedData.latitude); 
+                    //i2c_setReturnData(&returnPacket, parsedData.latitude);
+                    i2c_setReturnData(&returnPacket, 0);
                     break;
 
                 case GET_LONG:
-                    i2c_setReturnData(&returnPacket, parsedData.longitude); 
+                    //i2c_setReturnData(&returnPacket, parsedData.longitude);
+                    i2c_setReturnData(&returnPacket, 1);
                     break;
 
                 case GET_SPEED:
-                    i2c_setReturnData(&returnPacket, parsedData.speed); 
+                    //i2c_setReturnData(&returnPacket, parsedData.speed);
+                    i2c_setReturnData(&returnPacket, 2);
                     break;
 
                 case GET_HEADING:
-                    i2c_setReturnData(&returnPacket, parsedData.heading); 
+                    //i2c_setReturnData(&returnPacket, parsedData.heading);
+                    i2c_setReturnData(&returnPacket, 3);
                     break;
 
                 default:
@@ -260,7 +266,7 @@ int main(void) {
                 PORTB &= ~(1 << PORTB0); 
         }
         
-        if (alive_counter == 1) {
+        if (alive_counter == 5000) {
             PORTB ^= 1 << PORTB2;
             alive_counter = 0;
         }

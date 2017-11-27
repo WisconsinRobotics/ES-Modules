@@ -1,7 +1,8 @@
 #ifndef NMEA_H
 #define NMEA_H
 #include <avr/io.h>
-
+#include "uart.h"
+#include <stdlib.h>
 
 typedef struct GPS_data {
     uint32_t latitude;

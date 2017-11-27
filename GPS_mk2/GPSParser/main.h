@@ -9,6 +9,7 @@
 #include "i2c_packet.h"
 #include "uart.h"
 #include "nmea.h"
+#include "uart.h"
 
 //define UART paramters
 #define USART_BAUDRATE 19200
@@ -28,21 +29,8 @@
 
 char NMEABuffer[100] = "$GPRMC,020106.2,V,0000.00000,N,00000.00000,W,000.18,300.6,150916,001.8,W,A*3D";
 char recvByte = ' ';
-
-//Set LED pins as outputs
-DDRB |= 1 << DDB0;
-DDRB |= 1 << DDB1;
-DDRB |= 1 << DDB2;
-
-//Packets for I2C communication 
-struct packet returnPacket;
 struct packet receivedPacket;
-
-//Initialize return Packet data buffer to zeros 
-for (int i = 0; i < 6; i++)
-    returnPacket.buffer[i] = 0;
-
-
+struct packet returnPacket;
 //various counters
 uint8_t alive_counter = 0;
 uint8_t cmd_counter = 0;

@@ -1,5 +1,5 @@
-#include "nmea.h"
-
+#include "garmin.h"
+#include <string.h>
 
 GPS_data GPSparse (char *message, GPS_data parsedData) {
     char messageType[7];

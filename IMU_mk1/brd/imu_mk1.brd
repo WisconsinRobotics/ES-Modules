@@ -865,11 +865,21 @@ Please make sure your boards conform to these design rules.</description>
 <element name="U1" library="SparkFun-Sensors" library_urn="urn:adsk.eagle:library:534" package="QFN24-3X3" package3d_urn="urn:adsk.eagle:package:39982/1" value="9DoF IMU" x="19.05" y="12.7">
 <attribute name="PROD_ID" value="IC-13192" x="19.05" y="12.7" size="1.778" layer="27" display="off"/>
 </element>
-<element name="U$1" library="000_CustomPartsMaster" package="0805_STACKPOLERESISTOR" value="" x="16.51" y="8.89"/>
-<element name="U$2" library="000_CustomPartsMaster" package="0805_STACKPOLERESISTOR" value="" x="22.86" y="12.7" rot="R270"/>
-<element name="U$8" library="000_CustomPartsMaster" package="0805_STACKPOLERESISTOR" value="" x="20.32" y="8.89"/>
-<element name="U$9" library="000_CustomPartsMaster" package="0805_STACKPOLERESISTOR" value="" x="11.557" y="17.272" rot="R90"/>
-<element name="U$10" library="000_CustomPartsMaster" package="0805_STACKPOLERESISTOR" value="" x="26.543" y="17.145" rot="R90"/>
+<element name="U$1" library="000_CustomPartsMaster" package="0805_STACKPOLERESISTOR" value="" x="16.51" y="8.89" smashed="yes">
+<attribute name="VALUE" x="15.24" y="10.16" size="1.27" layer="27"/>
+</element>
+<element name="U$2" library="000_CustomPartsMaster" package="0805_STACKPOLERESISTOR" value="" x="22.86" y="12.7" smashed="yes" rot="R270">
+<attribute name="VALUE" x="24.13" y="13.97" size="1.27" layer="27" rot="R270"/>
+</element>
+<element name="U$8" library="000_CustomPartsMaster" package="0805_STACKPOLERESISTOR" value="" x="20.32" y="8.89" smashed="yes">
+<attribute name="VALUE" x="19.05" y="10.16" size="1.27" layer="27"/>
+</element>
+<element name="U$9" library="000_CustomPartsMaster" package="0805_STACKPOLERESISTOR" value="" x="11.557" y="17.272" smashed="yes" rot="R90">
+<attribute name="VALUE" x="10.287" y="16.002" size="1.27" layer="27" rot="R90"/>
+</element>
+<element name="U$10" library="000_CustomPartsMaster" package="0805_STACKPOLERESISTOR" value="" x="26.543" y="17.145" smashed="yes" rot="R90">
+<attribute name="VALUE" x="25.273" y="15.875" size="1.27" layer="27" rot="R90"/>
+</element>
 </elements>
 <signals>
 <signal name="GND">
@@ -1023,10 +1033,7 @@ Please make sure your boards conform to these design rules.</description>
 <wire x1="18.45" y1="10.16" x2="16.637" y2="10.16" width="0.1524" layer="1"/>
 <wire x1="16.637" y1="10.16" x2="16.129" y2="10.668" width="0.1524" layer="1"/>
 <wire x1="16.129" y1="10.668" x2="16.129" y2="13.335" width="0.1524" layer="1"/>
-<wire x1="16.129" y1="13.335" x2="16.51" y2="13.716" width="0.1524" layer="1"/>
-<wire x1="17.320125" y1="13.716" x2="16.51" y2="13.716" width="0.1524" layer="1"/>
-<wire x1="17.4975" y1="13.7" x2="17.336125" y2="13.7" width="0.1524" layer="1"/>
-<wire x1="17.336125" y1="13.7" x2="17.320125" y2="13.716" width="0.1524" layer="1"/>
+<wire x1="16.51" y1="13.716" x2="16.129" y2="13.335" width="0.1524" layer="1"/>
 <wire x1="22.86" y1="11.65" x2="22.86" y2="10.16" width="0.1524" layer="1"/>
 <via x="22.86" y="10.16" extent="1-16" drill="0.35"/>
 <wire x1="18.4568" y1="17.018" x2="16.51" y2="15.0712" width="0.1524" layer="16"/>
@@ -1034,6 +1041,8 @@ Please make sure your boards conform to these design rules.</description>
 <via x="16.51" y="13.716" extent="1-16" drill="0.35"/>
 <wire x1="29.208" y1="9.597" x2="23.423" y2="9.597" width="0.1524" layer="16"/>
 <wire x1="23.423" y1="9.597" x2="22.86" y2="10.16" width="0.1524" layer="16"/>
+<wire x1="17.4975" y1="13.7" x2="16.526" y2="13.7" width="0.1524" layer="1"/>
+<wire x1="16.526" y1="13.7" x2="16.51" y2="13.716" width="0.1524" layer="1"/>
 </signal>
 <signal name="RESET">
 <contactref element="IMU" pad="RESET@1"/>

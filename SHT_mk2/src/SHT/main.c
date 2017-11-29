@@ -15,7 +15,7 @@
 #include <util/delay.h>
 #include <avr/interrupt.h>
 #include "i2c_packet.h"
-//#include "SHT1x.h"
+#include "SHT1x.h"
 
 
 int main(void) {
@@ -24,38 +24,39 @@ int main(void) {
     DDRD = 0b11000111;
     PORTC &= ~(1<<PORTC1);
 
+    PORTD |= (1<<PORTD0);
+    _delay_ms(100);
     PORTD ^= (1<<PORTD0);
-    _delay_ms(10);
+    _delay_ms(100);
     PORTD ^= (1<<PORTD0);
-    _delay_ms(10);
+    _delay_ms(100);
     PORTD ^= (1<<PORTD0);
-    _delay_ms(10);
-    PORTD ^= (1<<PORTD0);
-    _delay_ms(10);
+    _delay_ms(100);
     PORTD ^= (1<<PORTD0);
 
     i2c_init(77);
     sei();
     int counter = 0;
-    //packet receivedPacket;
-    //packet returnPacket;
-    //SHT1x sht;
+    packet receivedPacket;
+    packet returnPacket;
+    SHT1x sht;
 
     while (1) {
-        //returnPacket.cmd = GET_TEMP;
+        returnPacket.cmd = GET_TEMP;
       
-        //uint16_t tempC = sht.readTemperatureC();
-        //returnPacket.buffer[0] = (uint8_t) (tempC>>8);
-        //returnPacket.buffer[1] = (uint8_t) (tempC);
+        uint16_t tempC = sht.readTemperatureC();
+        returnPacket.buffer[2] = (uint8_t) (tempC>>8);
+        returnPacket.buffer[3] = (uint8_t) (tempC);
             
-        //uint16_t humidity = sht.readHumidity();
-        //returnPacket.buffer[2] = (uint8_t) (humidity>>8);
-        //returnPacket.buffer[3] = (uint8_t) (humidity);
+        uint16_t humidity = sht.readHumidity();
+        returnPacket.buffer[0] = (uint8_t) (humidity>>8);
+        returnPacket.buffer[1] = (uint8_t) (humidity);
+
         //returnPacket.buffer[0] = 0xAA;
         //returnPacket.buffer[1] = 0xBB;
         //returnPacket.buffer[2] = 0xCC;
         //returnPacket.buffer[3] = 0xDD;
-        /*
+
         i2c_setReturnPacket(&returnPacket, 4);
 
         i2c_checkForPackets();
@@ -79,8 +80,8 @@ int main(void) {
                     break;
             }
         }
-        */
-        _delay_ms(1);
+
+        _delay_ms(100);
 
         counter++;
         if(counter>=1){

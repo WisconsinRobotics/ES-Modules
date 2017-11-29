@@ -9,11 +9,11 @@
 #include <stdlib.h>
 #define F_CPU 8000000UL
 
-struct packet
+typedef struct packet
 {
 	uint8_t cmd;
 	uint8_t buffer[15];
-};
+} packet;
 
 #define START 0xAB
 #define STOP 0xCD
@@ -69,7 +69,7 @@ void i2c_checkForBusHogging();
 #define TWIQUEUE_STX_ADR_ACK_M_ARB_LOST 0xB0  // Arbitration lost in SLA+R/W as Master; own SLA+R has been received; ACK has been returned
 #define TWIQUEUE_STX_DATA_ACK           0xB8  // Data byte in TWDR has been transmitted; ACK has been received
 #define TWIQUEUE_STX_DATA_NACK          0xC0  // Data byte in TWDR has been transmitted; NOT ACK has been received
-#define TWIQUEUE_STX_DATA_ACK_LAST_BYTE 0xC8  // Last data byte in TWDR has been transmitted (TWEA = “0”); ACK has been received
+#define TWIQUEUE_STX_DATA_ACK_LAST_BYTE 0xC8  // Last data byte in TWDR has been transmitted (TWEA = ï¿½0ï¿½); ACK has been received
 
 // TWIQUEUE Slave Receiver status codes
 #define TWIQUEUE_SRX_ADR_ACK            0x60  // Own SLA+W has been received ACK has been returned
@@ -83,5 +83,5 @@ void i2c_checkForBusHogging();
 #define TWIQUEUE_SRX_STOP_RESTART       0xA0  // A STOP condition or repeated START condition has been received while still addressed as Slave
 
 // TWIQUEUE Miscellaneous status codes
-#define TWIQUEUE_NO_STATE               0xF8  // No relevant state information available; TWIQUEUENT = “0”
+#define TWIQUEUE_NO_STATE               0xF8  // No relevant state information available; TWIQUEUENT = ï¿½0ï¿½
 #define TWIQUEUE_BUS_ERROR              0x00  // Bus error due to an illegal START or STOP condition

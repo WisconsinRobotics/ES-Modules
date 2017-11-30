@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="8.3.2">
+<eagle version="8.4.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -11,6 +11,18 @@
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
+<layer number="3" name="Route3" color="4" fill="3" visible="no" active="no"/>
+<layer number="4" name="Route4" color="1" fill="4" visible="no" active="no"/>
+<layer number="5" name="Route5" color="4" fill="4" visible="no" active="no"/>
+<layer number="6" name="Route6" color="1" fill="8" visible="no" active="no"/>
+<layer number="7" name="Route7" color="4" fill="8" visible="no" active="no"/>
+<layer number="8" name="Route8" color="1" fill="2" visible="no" active="no"/>
+<layer number="9" name="Route9" color="4" fill="2" visible="no" active="no"/>
+<layer number="10" name="Route10" color="1" fill="7" visible="no" active="no"/>
+<layer number="11" name="Route11" color="4" fill="7" visible="no" active="no"/>
+<layer number="12" name="Route12" color="1" fill="5" visible="no" active="no"/>
+<layer number="13" name="Route13" color="4" fill="5" visible="no" active="no"/>
+<layer number="14" name="Route14" color="1" fill="6" visible="no" active="no"/>
 <layer number="15" name="Route15" color="4" fill="6" visible="no" active="no"/>
 <layer number="16" name="Bottom" color="1" fill="1" visible="no" active="no"/>
 <layer number="17" name="Pads" color="2" fill="1" visible="no" active="no"/>
@@ -170,7 +182,7 @@
 <pad name="GND@1" x="15.24" y="31.75" drill="0.9" shape="square"/>
 <pad name="B" x="17.78" y="34.29" drill="0.9"/>
 <pad name="A" x="20.32" y="34.29" drill="0.9"/>
-<pad name="RESET" x="22.86" y="34.29" drill="0.9"/>
+<pad name="RESET@1" x="22.86" y="34.29" drill="0.9"/>
 <pad name="3P3V@1" x="22.86" y="31.75" drill="0.9"/>
 <pad name="SCL" x="20.32" y="31.75" drill="0.9"/>
 <pad name="SDA" x="17.78" y="31.75" drill="0.9"/>
@@ -183,108 +195,26 @@
 <wire x1="37.1" y1="38.1" x2="1" y2="38.1" width="0.127" layer="20"/>
 <hole x="2.794" y="35.306" drill="3.7973"/>
 <hole x="35.306" y="35.306" drill="3.7973"/>
-<wire x1="9.872" y1="6.277" x2="1.072" y2="6.277" width="0.254" layer="21"/>
-<wire x1="-0.028" y1="7.597" x2="-0.028" y2="20.597" width="0.254" layer="21"/>
-<wire x1="1.072" y1="21.917" x2="9.872" y2="21.917" width="0.254" layer="21"/>
-<wire x1="9.872" y1="21.917" x2="9.872" y2="21.097" width="0.254" layer="21"/>
-<wire x1="9.872" y1="11.597" x2="9.872" y2="10.597" width="0.254" layer="21"/>
-<wire x1="9.872" y1="8.597" x2="9.872" y2="7.597" width="0.254" layer="21"/>
-<wire x1="9.872" y1="7.097" x2="9.872" y2="6.277" width="0.254" layer="21"/>
-<wire x1="1.072" y1="21.917" x2="-0.028" y2="20.597" width="0.254" layer="21"/>
-<wire x1="1.072" y1="6.277" x2="-0.028" y2="7.597" width="0.254" layer="21"/>
-<wire x1="2.172" y1="15.097" x2="2.172" y2="13.097" width="0.254" layer="21"/>
-<wire x1="2.172" y1="13.097" x2="1.572" y2="13.097" width="0.254" layer="21"/>
-<wire x1="1.572" y1="13.097" x2="0.572" y2="13.097" width="0.254" layer="21"/>
-<wire x1="0.572" y1="13.097" x2="0.572" y2="15.097" width="0.254" layer="21"/>
-<wire x1="0.572" y1="15.097" x2="1.572" y2="15.097" width="0.254" layer="21"/>
-<wire x1="1.572" y1="15.097" x2="2.172" y2="15.097" width="0.254" layer="21"/>
-<wire x1="1.572" y1="15.097" x2="1.572" y2="13.097" width="0.254" layer="21"/>
-<wire x1="9.872" y1="21.097" x2="8.072" y2="21.097" width="0.254" layer="21"/>
-<wire x1="8.072" y1="21.097" x2="8.072" y2="20.597" width="0.254" layer="21"/>
-<wire x1="8.072" y1="20.597" x2="9.872" y2="20.597" width="0.254" layer="21"/>
-<wire x1="9.872" y1="7.097" x2="8.072" y2="7.097" width="0.254" layer="21"/>
-<wire x1="8.072" y1="7.097" x2="8.072" y2="7.597" width="0.254" layer="21"/>
-<wire x1="8.072" y1="7.597" x2="9.872" y2="7.597" width="0.254" layer="21"/>
-<wire x1="8.272" y1="13.297" x2="8.272" y2="11.897" width="0.254" layer="21"/>
-<wire x1="8.272" y1="11.897" x2="9.572" y2="11.897" width="0.254" layer="21"/>
-<wire x1="8.272" y1="13.297" x2="9.572" y2="13.297" width="0.254" layer="21"/>
-<wire x1="9.872" y1="13.597" x2="9.572" y2="13.297" width="0.254" layer="21" curve="-90"/>
-<wire x1="9.872" y1="11.597" x2="9.572" y2="11.897" width="0.254" layer="21" curve="90"/>
-<wire x1="9.572" y1="10.297" x2="8.272" y2="10.297" width="0.254" layer="21"/>
-<wire x1="8.272" y1="10.297" x2="8.272" y2="8.897" width="0.254" layer="21"/>
-<wire x1="8.272" y1="8.897" x2="9.572" y2="8.897" width="0.254" layer="21"/>
-<wire x1="9.872" y1="10.597" x2="9.572" y2="10.297" width="0.254" layer="21" curve="-73.739795"/>
-<wire x1="9.872" y1="8.597" x2="9.572" y2="8.897" width="0.254" layer="21" curve="90"/>
-<wire x1="9.872" y1="14.597" x2="9.872" y2="13.597" width="0.254" layer="21"/>
-<wire x1="8.272" y1="16.297" x2="8.272" y2="14.897" width="0.254" layer="21"/>
-<wire x1="8.272" y1="14.897" x2="9.572" y2="14.897" width="0.254" layer="21"/>
-<wire x1="8.272" y1="16.297" x2="9.572" y2="16.297" width="0.254" layer="21"/>
-<wire x1="9.872" y1="16.597" x2="9.572" y2="16.297" width="0.254" layer="21" curve="-90"/>
-<wire x1="9.872" y1="14.597" x2="9.572" y2="14.897" width="0.254" layer="21" curve="90"/>
-<wire x1="9.872" y1="17.597" x2="9.872" y2="16.597" width="0.254" layer="21"/>
-<wire x1="8.272" y1="19.297" x2="8.272" y2="17.897" width="0.254" layer="21"/>
-<wire x1="8.272" y1="17.897" x2="9.572" y2="17.897" width="0.254" layer="21"/>
-<wire x1="8.272" y1="19.297" x2="9.572" y2="19.297" width="0.254" layer="21"/>
-<wire x1="9.872" y1="19.597" x2="9.572" y2="19.297" width="0.254" layer="21" curve="-90"/>
-<wire x1="9.872" y1="17.597" x2="9.572" y2="17.897" width="0.254" layer="21" curve="90"/>
-<wire x1="9.872" y1="20.597" x2="9.872" y2="19.597" width="0.254" layer="21"/>
 <pad name="GND@2" x="8.892" y="9.597" drill="1.02" shape="square" rot="R270"/>
 <pad name="DATA1@1" x="8.892" y="12.597" drill="1.02" rot="R270"/>
 <pad name="DATA0@1" x="8.892" y="15.597" drill="1.02" rot="R270"/>
 <pad name="3P3V@2" x="8.892" y="18.597" drill="1.02" rot="R270"/>
 <hole x="4.572" y="11.747" drill="3"/>
 <hole x="4.572" y="16.447" drill="3"/>
-<wire x1="28.228" y1="21.917" x2="37.028" y2="21.917" width="0.254" layer="21"/>
-<wire x1="38.128" y1="20.597" x2="38.128" y2="7.597" width="0.254" layer="21"/>
-<wire x1="37.028" y1="6.277" x2="28.228" y2="6.277" width="0.254" layer="21"/>
-<wire x1="28.228" y1="6.277" x2="28.228" y2="7.097" width="0.254" layer="21"/>
-<wire x1="28.228" y1="16.597" x2="28.228" y2="17.597" width="0.254" layer="21"/>
-<wire x1="28.228" y1="19.597" x2="28.228" y2="20.597" width="0.254" layer="21"/>
-<wire x1="28.228" y1="21.097" x2="28.228" y2="21.917" width="0.254" layer="21"/>
-<wire x1="37.028" y1="6.277" x2="38.128" y2="7.597" width="0.254" layer="21"/>
-<wire x1="37.028" y1="21.917" x2="38.128" y2="20.597" width="0.254" layer="21"/>
-<wire x1="35.928" y1="13.097" x2="35.928" y2="15.097" width="0.254" layer="21"/>
-<wire x1="35.928" y1="15.097" x2="36.528" y2="15.097" width="0.254" layer="21"/>
-<wire x1="36.528" y1="15.097" x2="37.528" y2="15.097" width="0.254" layer="21"/>
-<wire x1="37.528" y1="15.097" x2="37.528" y2="13.097" width="0.254" layer="21"/>
-<wire x1="37.528" y1="13.097" x2="36.528" y2="13.097" width="0.254" layer="21"/>
-<wire x1="36.528" y1="13.097" x2="35.928" y2="13.097" width="0.254" layer="21"/>
-<wire x1="36.528" y1="13.097" x2="36.528" y2="15.097" width="0.254" layer="21"/>
-<wire x1="28.228" y1="7.097" x2="30.028" y2="7.097" width="0.254" layer="21"/>
-<wire x1="30.028" y1="7.097" x2="30.028" y2="7.597" width="0.254" layer="21"/>
-<wire x1="30.028" y1="7.597" x2="28.228" y2="7.597" width="0.254" layer="21"/>
-<wire x1="28.228" y1="21.097" x2="30.028" y2="21.097" width="0.254" layer="21"/>
-<wire x1="30.028" y1="21.097" x2="30.028" y2="20.597" width="0.254" layer="21"/>
-<wire x1="30.028" y1="20.597" x2="28.228" y2="20.597" width="0.254" layer="21"/>
-<wire x1="29.828" y1="14.897" x2="29.828" y2="16.297" width="0.254" layer="21"/>
-<wire x1="29.828" y1="16.297" x2="28.528" y2="16.297" width="0.254" layer="21"/>
-<wire x1="29.828" y1="14.897" x2="28.528" y2="14.897" width="0.254" layer="21"/>
-<wire x1="28.228" y1="14.597" x2="28.528" y2="14.897" width="0.254" layer="21" curve="-90"/>
-<wire x1="28.228" y1="16.597" x2="28.528" y2="16.297" width="0.254" layer="21" curve="90"/>
-<wire x1="28.528" y1="17.897" x2="29.828" y2="17.897" width="0.254" layer="21"/>
-<wire x1="29.828" y1="17.897" x2="29.828" y2="19.297" width="0.254" layer="21"/>
-<wire x1="29.828" y1="19.297" x2="28.528" y2="19.297" width="0.254" layer="21"/>
-<wire x1="28.228" y1="17.597" x2="28.528" y2="17.897" width="0.254" layer="21" curve="-73.739795"/>
-<wire x1="28.228" y1="19.597" x2="28.528" y2="19.297" width="0.254" layer="21" curve="90"/>
-<wire x1="28.228" y1="13.597" x2="28.228" y2="14.597" width="0.254" layer="21"/>
-<wire x1="29.828" y1="11.897" x2="29.828" y2="13.297" width="0.254" layer="21"/>
-<wire x1="29.828" y1="13.297" x2="28.528" y2="13.297" width="0.254" layer="21"/>
-<wire x1="29.828" y1="11.897" x2="28.528" y2="11.897" width="0.254" layer="21"/>
-<wire x1="28.228" y1="11.597" x2="28.528" y2="11.897" width="0.254" layer="21" curve="-90"/>
-<wire x1="28.228" y1="13.597" x2="28.528" y2="13.297" width="0.254" layer="21" curve="90"/>
-<wire x1="28.228" y1="10.597" x2="28.228" y2="11.597" width="0.254" layer="21"/>
-<wire x1="29.828" y1="8.897" x2="29.828" y2="10.297" width="0.254" layer="21"/>
-<wire x1="29.828" y1="10.297" x2="28.528" y2="10.297" width="0.254" layer="21"/>
-<wire x1="29.828" y1="8.897" x2="28.528" y2="8.897" width="0.254" layer="21"/>
-<wire x1="28.228" y1="8.597" x2="28.528" y2="8.897" width="0.254" layer="21" curve="-90"/>
-<wire x1="28.228" y1="10.597" x2="28.528" y2="10.297" width="0.254" layer="21" curve="90"/>
-<wire x1="28.228" y1="7.597" x2="28.228" y2="8.597" width="0.254" layer="21"/>
 <pad name="GND@3" x="29.208" y="18.597" drill="1.02" shape="square" rot="R90"/>
 <pad name="DATA1@2" x="29.208" y="15.597" drill="1.02" rot="R90"/>
 <pad name="DATA0@2" x="29.208" y="12.597" drill="1.02" rot="R90"/>
 <pad name="3P3V@3" x="29.208" y="9.597" drill="1.02" rot="R90"/>
 <hole x="33.528" y="16.447" drill="3"/>
 <hole x="33.528" y="11.747" drill="3"/>
+<pad name="MISO" x="3.81" y="30.48" drill="1.1" diameter="1.778" shape="square" rot="R270"/>
+<pad name="MOSI" x="6.35" y="27.94" drill="1.1" diameter="1.778" rot="R270"/>
+<pad name="GND@4" x="6.35" y="25.4" drill="1.1" diameter="1.778" rot="R270"/>
+<pad name="3P3V@4" x="6.35" y="30.48" drill="1.1" diameter="1.778" rot="R270"/>
+<pad name="SCK" x="3.81" y="27.94" drill="1.1" diameter="1.778" rot="R270"/>
+<pad name="RESET@2" x="3.81" y="25.4" drill="1.1" diameter="1.778" rot="R270"/>
+<text x="6.35" y="36.195" size="1.27" layer="21">&gt;Name</text>
+<text x="6.35" y="34.29" size="1.27" layer="21">&gt;Value</text>
 </package>
 <package name="TQFP32-08">
 <description>&lt;B&gt;Thin Plasic Quad Flat Package&lt;/B&gt; Grid 0.8 mm</description>
@@ -383,25 +313,10 @@
 <text x="-1.27" y="3.81" size="1.27" layer="25">&gt;NAME</text>
 <text x="-1.27" y="1.27" size="1.27" layer="27">&gt;VALUE</text>
 </package>
-<package name="6PINHEADER_CORRECT">
-<pad name="1" x="0" y="0" drill="1" diameter="1.6764" shape="square"/>
-<pad name="3" x="0" y="-2.54" drill="1" diameter="1.6764"/>
-<pad name="5" x="0" y="-5.08" drill="1" diameter="1.6764"/>
-<pad name="2" x="2.54" y="0" drill="1" diameter="1.6764"/>
-<pad name="4" x="2.54" y="-2.54" drill="1" diameter="1.6764"/>
-<pad name="6" x="2.54" y="-5.08" drill="1" diameter="1.6764"/>
-<text x="0" y="5.08" size="1.27" layer="25">&gt;NAME</text>
-<text x="0" y="2.54" size="1.27" layer="27">&gt;VALUE</text>
-<wire x1="-1.27" y1="1.27" x2="3.81" y2="1.27" width="0.127" layer="21"/>
-<wire x1="3.81" y1="1.27" x2="3.81" y2="-6.35" width="0.127" layer="21"/>
-<wire x1="3.81" y1="-6.35" x2="-1.27" y2="-6.35" width="0.127" layer="21"/>
-<wire x1="-1.27" y1="-6.35" x2="-1.27" y2="1.27" width="0.127" layer="21"/>
-<text x="-2.54" y="1.27" size="1.27" layer="21">1</text>
-</package>
 </packages>
 <symbols>
 <symbol name="SENSOR_MODULE_MK1">
-<pin name="3.3V" x="20.32" y="63.5" visible="pin" length="middle"/>
+<pin name="3P3PV@1" x="20.32" y="63.5" visible="pin" length="middle"/>
 <pin name="GND@1" x="20.32" y="60.96" visible="pin" length="middle"/>
 <pin name="!RESET" x="20.32" y="48.26" visible="pin" length="middle"/>
 <pin name="SDA" x="20.32" y="27.94" visible="pin" length="middle"/>
@@ -547,12 +462,12 @@ scheme "Mk1", "Mk2", "Mk3", etc</text>
 <wire x1="25.4" y1="175.26" x2="25.4" y2="142.24" width="0.254" layer="94"/>
 <wire x1="25.4" y1="142.24" x2="25.4" y2="137.16" width="0.254" layer="94"/>
 <wire x1="111.76" y1="142.24" x2="129.54" y2="142.24" width="0.254" layer="94" style="longdash"/>
-<wire x1="129.54" y1="142.24" x2="129.54" y2="-17.78" width="0.254" layer="94" style="longdash"/>
-<wire x1="129.54" y1="-17.78" x2="22.86" y2="-17.78" width="0.254" layer="94" style="longdash"/>
-<wire x1="22.86" y1="-17.78" x2="22.86" y2="-12.7" width="0.254" layer="94" style="longdash"/>
+<wire x1="129.54" y1="142.24" x2="129.54" y2="-48.26" width="0.254" layer="94" style="longdash"/>
+<wire x1="129.54" y1="-48.26" x2="22.86" y2="-48.26" width="0.254" layer="94" style="longdash"/>
+<wire x1="22.86" y1="-48.26" x2="22.86" y2="-43.18" width="0.254" layer="94" style="longdash"/>
 <wire x1="22.86" y1="134.62" x2="22.86" y2="142.24" width="0.254" layer="94" style="longdash"/>
 <wire x1="22.86" y1="142.24" x2="25.4" y2="142.24" width="0.254" layer="94" style="longdash"/>
-<pin name="3P3V" x="20.32" y="-2.54" visible="pin" length="middle"/>
+<pin name="3P3V@2" x="20.32" y="-2.54" visible="pin" length="middle"/>
 <pin name="DATA0/SDA/TX" x="20.32" y="-5.08" visible="pin" length="middle"/>
 <pin name="DATA1/SCL/RX" x="20.32" y="-7.62" visible="pin" length="middle"/>
 <text x="46.609" y="-11.43" size="1.778" layer="94">These are the connections for the the actual sensors 
@@ -561,10 +476,22 @@ While some sensors may use more pins than others,
 we're sticking to a standardized 4-pin connection for most things.</text>
 <wire x1="25.4" y1="2.54" x2="124.46" y2="2.54" width="0.254" layer="94"/>
 <wire x1="124.46" y1="2.54" x2="124.46" y2="-15.24" width="0.254" layer="94"/>
-<wire x1="124.46" y1="-15.24" x2="25.4" y2="-15.24" width="0.254" layer="94"/>
 <wire x1="25.4" y1="-15.24" x2="25.4" y2="2.54" width="0.254" layer="94"/>
 <text x="27.94" y="0" size="1.778" layer="94">Extra Signals</text>
 <pin name="GND@2" x="20.32" y="-10.16" visible="pin" length="middle"/>
+<wire x1="124.46" y1="-15.24" x2="25.4" y2="-15.24" width="0.254" layer="94"/>
+<wire x1="124.46" y1="-40.64" x2="25.4" y2="-40.64" width="0.254" layer="94"/>
+<wire x1="25.4" y1="-17.78" x2="124.46" y2="-17.78" width="0.254" layer="94"/>
+<wire x1="25.4" y1="-17.78" x2="25.4" y2="-40.64" width="0.254" layer="94"/>
+<wire x1="124.46" y1="-17.78" x2="124.46" y2="-40.64" width="0.254" layer="94"/>
+<pin name="3P3V@3" x="20.32" y="-22.86" visible="pin" length="middle"/>
+<pin name="MISO" x="20.32" y="-25.4" visible="pin" length="middle"/>
+<pin name="MOSI" x="20.32" y="-27.94" visible="pin" length="middle"/>
+<pin name="SCK" x="20.32" y="-30.48" visible="pin" length="middle"/>
+<pin name="RESET" x="20.32" y="-33.02" visible="pin" length="middle"/>
+<pin name="GND@3" x="20.32" y="-35.56" visible="pin" length="middle"/>
+<text x="27.94" y="-20.32" size="1.778" layer="94">ISP Header</text>
+<text x="44.069" y="-24.13" size="1.778" layer="94">These are the programming pins for the AVR.</text>
 </symbol>
 <symbol name="ATMEGA328-SYM">
 <description>Symbol for the ATMega328 for the 32-TQFP package</description>
@@ -620,20 +547,6 @@ we're sticking to a standardized 4-pin connection for most things.</text>
 <wire x1="0" y1="2.54" x2="0" y2="5.08" width="0.254" layer="94"/>
 <wire x1="0" y1="-2.54" x2="0" y2="-5.08" width="0.254" layer="94"/>
 </symbol>
-<symbol name="ISP">
-<pin name="MOSI" x="-5.08" y="2.54" visible="pin" length="middle"/>
-<pin name="MISO" x="-5.08" y="-2.54" visible="pin" length="middle"/>
-<pin name="SCK" x="-5.08" y="-7.62" visible="pin" length="middle"/>
-<pin name="!RESET" x="-5.08" y="-12.7" visible="pin" length="middle"/>
-<pin name="GND" x="-5.08" y="7.62" visible="pin" length="middle"/>
-<pin name="VCC" x="-5.08" y="12.7" visible="pin" length="middle"/>
-<wire x1="0" y1="15.24" x2="0" y2="-15.24" width="0.254" layer="94"/>
-<wire x1="0" y1="-15.24" x2="10.16" y2="-15.24" width="0.254" layer="94"/>
-<wire x1="0" y1="15.24" x2="10.16" y2="15.24" width="0.254" layer="94"/>
-<wire x1="10.16" y1="15.24" x2="10.16" y2="-15.24" width="0.254" layer="94"/>
-<text x="0" y="20.32" size="1.778" layer="95">&gt;NAME</text>
-<text x="0" y="17.78" size="1.778" layer="96">&gt;VALUE</text>
-</symbol>
 <symbol name="CAPACITOR">
 <wire x1="2.54" y1="0.635" x2="0" y2="0.635" width="0.254" layer="94"/>
 <wire x1="0" y1="0.635" x2="-2.54" y2="0.635" width="0.254" layer="94"/>
@@ -655,9 +568,10 @@ we're sticking to a standardized 4-pin connection for most things.</text>
 <devices>
 <device name="" package="SENSOR_MODULE_MK1">
 <connects>
-<connect gate="G$1" pin="!RESET" pad="RESET"/>
-<connect gate="G$1" pin="3.3V" pad="3P3V@1"/>
-<connect gate="G$1" pin="3P3V" pad="3P3V@2 3P3V@3"/>
+<connect gate="G$1" pin="!RESET" pad="RESET@1"/>
+<connect gate="G$1" pin="3P3PV@1" pad="3P3V@1"/>
+<connect gate="G$1" pin="3P3V@2" pad="3P3V@2 3P3V@3"/>
+<connect gate="G$1" pin="3P3V@3" pad="3P3V@4"/>
 <connect gate="G$1" pin="ALIVELED_ANODE" pad="ALIVELED_ANODE"/>
 <connect gate="G$1" pin="ALIVELED_CATHODE" pad="ALIVELED_CATHODE"/>
 <connect gate="G$1" pin="CMDLED_ANODE" pad="CMDLED_ANODE"/>
@@ -666,10 +580,15 @@ we're sticking to a standardized 4-pin connection for most things.</text>
 <connect gate="G$1" pin="DATA1/SCL/RX" pad="DATA1@1 DATA1@2"/>
 <connect gate="G$1" pin="GND@1" pad="GND@1"/>
 <connect gate="G$1" pin="GND@2" pad="GND@2 GND@3"/>
+<connect gate="G$1" pin="GND@3" pad="GND@4"/>
+<connect gate="G$1" pin="MISO" pad="MISO"/>
+<connect gate="G$1" pin="MOSI" pad="MOSI"/>
 <connect gate="G$1" pin="PINGLED_ANODE" pad="PINGLED_ANODE"/>
 <connect gate="G$1" pin="PINGLED_CATHODE" pad="PINGLED_CATHODE"/>
 <connect gate="G$1" pin="PWRLED_ANODE" pad="PWRLED_ANODE"/>
 <connect gate="G$1" pin="PWRLED_CATHODE" pad="PWRLED_CATHODE"/>
+<connect gate="G$1" pin="RESET" pad="RESET@2"/>
+<connect gate="G$1" pin="SCK" pad="SCK"/>
 <connect gate="G$1" pin="SCL" pad="SCL"/>
 <connect gate="G$1" pin="SDA" pad="SDA"/>
 <connect gate="G$1" pin="SIGNAL_A" pad="A"/>
@@ -753,26 +672,6 @@ we're sticking to a standardized 4-pin connection for most things.</text>
 </device>
 </devices>
 </deviceset>
-<deviceset name="ISP_PROGRAMMING_HEADER" uservalue="yes">
-<gates>
-<gate name="G$1" symbol="ISP" x="0" y="0"/>
-</gates>
-<devices>
-<device name="" package="6PINHEADER_CORRECT">
-<connects>
-<connect gate="G$1" pin="!RESET" pad="5"/>
-<connect gate="G$1" pin="GND" pad="6"/>
-<connect gate="G$1" pin="MISO" pad="1"/>
-<connect gate="G$1" pin="MOSI" pad="4"/>
-<connect gate="G$1" pin="SCK" pad="3"/>
-<connect gate="G$1" pin="VCC" pad="2"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
 <deviceset name="CAPACITOR-UNPOLARIZED" uservalue="yes">
 <gates>
 <gate name="G$1" symbol="CAPACITOR" x="0" y="0"/>
@@ -801,14 +700,13 @@ we're sticking to a standardized 4-pin connection for most things.</text>
 </class>
 </classes>
 <parts>
-<part name="TESTMOUDULE" library="000_CustomPartsMaster" deviceset="SENSOR_MODULE_MK1" device=""/>
+<part name="SHT" library="000_CustomPartsMaster" deviceset="SENSOR_MODULE_MK1" device="" value="MK2"/>
 <part name="U$1" library="000_CustomPartsMaster" deviceset="ATMEGA328" device="TQFP32-08"/>
 <part name="U$2" library="000_CustomPartsMaster" deviceset="RESISTOR" device=""/>
 <part name="U$3" library="000_CustomPartsMaster" deviceset="RESISTOR" device=""/>
 <part name="U$4" library="000_CustomPartsMaster" deviceset="RESISTOR" device=""/>
 <part name="U$5" library="000_CustomPartsMaster" deviceset="RESISTOR" device=""/>
 <part name="U$6" library="000_CustomPartsMaster" deviceset="RESISTOR" device=""/>
-<part name="U$7" library="000_CustomPartsMaster" deviceset="ISP_PROGRAMMING_HEADER" device=""/>
 <part name="U$8" library="000_CustomPartsMaster" deviceset="CAPACITOR-UNPOLARIZED" device="0805"/>
 <part name="U$9" library="000_CustomPartsMaster" deviceset="CAPACITOR-UNPOLARIZED" device="0805"/>
 <part name="U$10" library="000_CustomPartsMaster" deviceset="CAPACITOR-UNPOLARIZED" device="0805"/>
@@ -819,14 +717,13 @@ we're sticking to a standardized 4-pin connection for most things.</text>
 <plain>
 </plain>
 <instances>
-<instance part="TESTMOUDULE" gate="G$1" x="99.06" y="0"/>
+<instance part="SHT" gate="G$1" x="99.06" y="0"/>
 <instance part="U$1" gate="G$1" x="45.72" y="40.64" rot="R180"/>
 <instance part="U$2" gate="G$1" x="99.06" y="111.76" rot="R90"/>
 <instance part="U$3" gate="G$1" x="99.06" y="96.52" rot="R90"/>
 <instance part="U$4" gate="G$1" x="99.06" y="81.28" rot="R90"/>
 <instance part="U$5" gate="G$1" x="78.74" y="-25.4" rot="R90"/>
 <instance part="U$6" gate="G$1" x="78.74" y="-33.02" rot="R90"/>
-<instance part="U$7" gate="G$1" x="48.26" y="137.16" rot="R180"/>
 <instance part="U$8" gate="G$1" x="91.44" y="172.72" rot="R270"/>
 <instance part="U$9" gate="G$1" x="91.44" y="165.1" rot="R270"/>
 <instance part="U$10" gate="G$1" x="91.44" y="157.48" rot="R270"/>
@@ -855,7 +752,7 @@ we're sticking to a standardized 4-pin connection for most things.</text>
 <label x="66.04" y="12.7" size="1.778" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="TESTMOUDULE" gate="G$1" pin="3.3V"/>
+<pinref part="SHT" gate="G$1" pin="3P3PV@1"/>
 <wire x1="119.38" y1="63.5" x2="111.76" y2="63.5" width="0.1524" layer="91"/>
 <label x="111.76" y="63.5" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
@@ -868,11 +765,6 @@ we're sticking to a standardized 4-pin connection for most things.</text>
 <pinref part="U$6" gate="G$1" pin="P$2"/>
 <wire x1="83.82" y1="-33.02" x2="86.36" y2="-33.02" width="0.1524" layer="91"/>
 <label x="86.36" y="-33.02" size="1.778" layer="95" xref="yes"/>
-</segment>
-<segment>
-<pinref part="U$7" gate="G$1" pin="VCC"/>
-<wire x1="53.34" y1="124.46" x2="60.96" y2="124.46" width="0.1524" layer="91"/>
-<label x="60.96" y="124.46" size="1.778" layer="95" xref="yes"/>
 </segment>
 <segment>
 <pinref part="U$8" gate="G$1" pin="P$2"/>
@@ -892,6 +784,11 @@ we're sticking to a standardized 4-pin connection for most things.</text>
 <wire x1="93.98" y1="127" x2="91.44" y2="127" width="0.1524" layer="91"/>
 <label x="91.44" y="127" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
+<segment>
+<pinref part="SHT" gate="G$1" pin="3P3V@3"/>
+<wire x1="119.38" y1="-22.86" x2="106.68" y2="-22.86" width="0.1524" layer="91"/>
+<label x="106.68" y="-22.86" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="GND" class="0">
 <segment>
@@ -905,29 +802,24 @@ we're sticking to a standardized 4-pin connection for most things.</text>
 <label x="66.04" y="101.6" size="1.778" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="TESTMOUDULE" gate="G$1" pin="GND@1"/>
+<pinref part="SHT" gate="G$1" pin="GND@1"/>
 <wire x1="119.38" y1="60.96" x2="111.76" y2="60.96" width="0.1524" layer="91"/>
 <label x="111.76" y="60.96" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<pinref part="TESTMOUDULE" gate="G$1" pin="CMDLED_CATHODE"/>
+<pinref part="SHT" gate="G$1" pin="CMDLED_CATHODE"/>
 <wire x1="119.38" y1="81.28" x2="121.92" y2="81.28" width="0.1524" layer="91"/>
 <label x="121.92" y="81.28" size="1.778" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="TESTMOUDULE" gate="G$1" pin="PINGLED_CATHODE"/>
+<pinref part="SHT" gate="G$1" pin="PINGLED_CATHODE"/>
 <wire x1="119.38" y1="96.52" x2="121.92" y2="96.52" width="0.1524" layer="91"/>
 <label x="121.92" y="96.52" size="1.778" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="TESTMOUDULE" gate="G$1" pin="ALIVELED_CATHODE"/>
+<pinref part="SHT" gate="G$1" pin="ALIVELED_CATHODE"/>
 <wire x1="119.38" y1="111.76" x2="121.92" y2="111.76" width="0.1524" layer="91"/>
 <label x="121.92" y="111.76" size="1.778" layer="95" xref="yes"/>
-</segment>
-<segment>
-<pinref part="U$7" gate="G$1" pin="GND"/>
-<wire x1="53.34" y1="129.54" x2="60.96" y2="129.54" width="0.1524" layer="91"/>
-<label x="60.96" y="129.54" size="1.778" layer="95" xref="yes"/>
 </segment>
 <segment>
 <pinref part="U$8" gate="G$1" pin="P$1"/>
@@ -943,40 +835,45 @@ we're sticking to a standardized 4-pin connection for most things.</text>
 <label x="104.14" y="165.1" size="1.778" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="TESTMOUDULE" gate="G$1" pin="PWRLED_CATHODE"/>
+<pinref part="SHT" gate="G$1" pin="PWRLED_CATHODE"/>
 <wire x1="119.38" y1="127" x2="121.92" y2="127" width="0.1524" layer="91"/>
 <label x="121.92" y="127" size="1.778" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="TESTMOUDULE" gate="G$1" pin="GND@2"/>
+<pinref part="SHT" gate="G$1" pin="GND@2"/>
 <wire x1="119.38" y1="-10.16" x2="109.22" y2="-10.16" width="0.1524" layer="91"/>
 <label x="109.22" y="-10.16" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="SHT" gate="G$1" pin="GND@3"/>
+<wire x1="119.38" y1="-35.56" x2="106.68" y2="-35.56" width="0.1524" layer="91"/>
+<label x="106.68" y="-35.56" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$12" class="0">
 <segment>
-<pinref part="TESTMOUDULE" gate="G$1" pin="PWRLED_ANODE"/>
+<pinref part="SHT" gate="G$1" pin="PWRLED_ANODE"/>
 <wire x1="106.68" y1="127" x2="104.14" y2="127" width="0.1524" layer="91"/>
 <pinref part="U$12" gate="G$1" pin="P$2"/>
 </segment>
 </net>
 <net name="N$13" class="0">
 <segment>
-<pinref part="TESTMOUDULE" gate="G$1" pin="ALIVELED_ANODE"/>
+<pinref part="SHT" gate="G$1" pin="ALIVELED_ANODE"/>
 <wire x1="106.68" y1="111.76" x2="104.14" y2="111.76" width="0.1524" layer="91"/>
 <pinref part="U$2" gate="G$1" pin="P$2"/>
 </segment>
 </net>
 <net name="N$14" class="0">
 <segment>
-<pinref part="TESTMOUDULE" gate="G$1" pin="PINGLED_ANODE"/>
+<pinref part="SHT" gate="G$1" pin="PINGLED_ANODE"/>
 <wire x1="106.68" y1="96.52" x2="104.14" y2="96.52" width="0.1524" layer="91"/>
 <pinref part="U$3" gate="G$1" pin="P$2"/>
 </segment>
 </net>
 <net name="N$15" class="0">
 <segment>
-<pinref part="TESTMOUDULE" gate="G$1" pin="CMDLED_ANODE"/>
+<pinref part="SHT" gate="G$1" pin="CMDLED_ANODE"/>
 <wire x1="106.68" y1="81.28" x2="104.14" y2="81.28" width="0.1524" layer="91"/>
 <pinref part="U$4" gate="G$1" pin="P$2"/>
 </segment>
@@ -988,7 +885,7 @@ we're sticking to a standardized 4-pin connection for most things.</text>
 <label x="66.04" y="53.34" size="1.778" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="TESTMOUDULE" gate="G$1" pin="SDA"/>
+<pinref part="SHT" gate="G$1" pin="SDA"/>
 <wire x1="119.38" y1="27.94" x2="111.76" y2="27.94" width="0.1524" layer="91"/>
 <label x="111.76" y="27.94" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
@@ -1000,7 +897,7 @@ we're sticking to a standardized 4-pin connection for most things.</text>
 <label x="66.04" y="55.88" size="1.778" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="TESTMOUDULE" gate="G$1" pin="SCL"/>
+<pinref part="SHT" gate="G$1" pin="SCL"/>
 <wire x1="119.38" y1="25.4" x2="111.76" y2="25.4" width="0.1524" layer="91"/>
 <label x="111.76" y="25.4" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
@@ -1012,7 +909,7 @@ we're sticking to a standardized 4-pin connection for most things.</text>
 <label x="66.04" y="58.42" size="1.778" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="TESTMOUDULE" gate="G$1" pin="!RESET"/>
+<pinref part="SHT" gate="G$1" pin="!RESET"/>
 <wire x1="119.38" y1="48.26" x2="111.76" y2="48.26" width="0.1524" layer="91"/>
 <label x="111.76" y="48.26" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
@@ -1022,9 +919,9 @@ we're sticking to a standardized 4-pin connection for most things.</text>
 <label x="71.12" y="-25.4" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<pinref part="U$7" gate="G$1" pin="!RESET"/>
-<wire x1="53.34" y1="149.86" x2="60.96" y2="149.86" width="0.1524" layer="91"/>
-<label x="60.96" y="149.86" size="1.778" layer="95" xref="yes"/>
+<pinref part="SHT" gate="G$1" pin="RESET"/>
+<wire x1="119.38" y1="-33.02" x2="106.68" y2="-33.02" width="0.1524" layer="91"/>
+<label x="106.68" y="-33.02" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="MOSI" class="0">
@@ -1034,9 +931,9 @@ we're sticking to a standardized 4-pin connection for most things.</text>
 <label x="66.04" y="27.94" size="1.778" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="U$7" gate="G$1" pin="MOSI"/>
-<wire x1="53.34" y1="134.62" x2="60.96" y2="134.62" width="0.1524" layer="91"/>
-<label x="60.96" y="134.62" size="1.778" layer="95" xref="yes"/>
+<pinref part="SHT" gate="G$1" pin="MOSI"/>
+<wire x1="119.38" y1="-27.94" x2="106.68" y2="-27.94" width="0.1524" layer="91"/>
+<label x="106.68" y="-27.94" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="MISO" class="0">
@@ -1046,9 +943,9 @@ we're sticking to a standardized 4-pin connection for most things.</text>
 <label x="66.04" y="30.48" size="1.778" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="U$7" gate="G$1" pin="MISO"/>
-<wire x1="53.34" y1="139.7" x2="60.96" y2="139.7" width="0.1524" layer="91"/>
-<label x="60.96" y="139.7" size="1.778" layer="95" xref="yes"/>
+<pinref part="SHT" gate="G$1" pin="MISO"/>
+<wire x1="119.38" y1="-25.4" x2="106.68" y2="-25.4" width="0.1524" layer="91"/>
+<label x="106.68" y="-25.4" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="SCK" class="0">
@@ -1058,9 +955,9 @@ we're sticking to a standardized 4-pin connection for most things.</text>
 <label x="66.04" y="33.02" size="1.778" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="U$7" gate="G$1" pin="SCK"/>
-<wire x1="53.34" y1="144.78" x2="60.96" y2="144.78" width="0.1524" layer="91"/>
-<label x="60.96" y="144.78" size="1.778" layer="95" xref="yes"/>
+<pinref part="SHT" gate="G$1" pin="SCK"/>
+<wire x1="119.38" y1="-30.48" x2="106.68" y2="-30.48" width="0.1524" layer="91"/>
+<label x="106.68" y="-30.48" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="DATA" class="0">
@@ -1075,7 +972,7 @@ we're sticking to a standardized 4-pin connection for most things.</text>
 <label x="71.12" y="-33.02" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<pinref part="TESTMOUDULE" gate="G$1" pin="DATA0/SDA/TX"/>
+<pinref part="SHT" gate="G$1" pin="DATA0/SDA/TX"/>
 <wire x1="119.38" y1="-5.08" x2="109.22" y2="-5.08" width="0.1524" layer="91"/>
 <label x="109.22" y="-5.08" size="1.778" layer="95"/>
 </segment>
@@ -1087,7 +984,7 @@ we're sticking to a standardized 4-pin connection for most things.</text>
 <label x="66.04" y="45.72" size="1.778" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="TESTMOUDULE" gate="G$1" pin="DATA1/SCL/RX"/>
+<pinref part="SHT" gate="G$1" pin="DATA1/SCL/RX"/>
 <wire x1="119.38" y1="-7.62" x2="109.22" y2="-7.62" width="0.1524" layer="91"/>
 <label x="109.22" y="-7.62" size="1.778" layer="95"/>
 </segment>
@@ -1130,7 +1027,7 @@ we're sticking to a standardized 4-pin connection for most things.</text>
 </net>
 <net name="3P3V" class="0">
 <segment>
-<pinref part="TESTMOUDULE" gate="G$1" pin="3P3V"/>
+<pinref part="SHT" gate="G$1" pin="3P3V@2"/>
 <wire x1="119.38" y1="-2.54" x2="109.22" y2="-2.54" width="0.1524" layer="91"/>
 <label x="109.22" y="-2.54" size="1.778" layer="95"/>
 </segment>

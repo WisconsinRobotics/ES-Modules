@@ -3,7 +3,7 @@
 #include <avr/io.h>
 #include "uart.h"
 #include <stdlib.h>
-
+#include "nmea.h"
 typedef struct GPS_data {
     uint32_t latitude;
     uint32_t longitude;
@@ -12,6 +12,6 @@ typedef struct GPS_data {
 } GPS_data;
 
 void receiveRMCMessage(char* NMEABuffer);
-GPS_data GPSparse(char* message, GPS_data parsedData);
-
+GPS_data GPSparse(char* message);
+GPS_data getGPS();
 #endif

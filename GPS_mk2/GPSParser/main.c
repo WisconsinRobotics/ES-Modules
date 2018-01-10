@@ -10,23 +10,24 @@
 int main(void) {
 
     USART0Init();
-
+     
     //Initialize I2C
     i2c_init(ADDRESS);
     sei();
+    
+    struct packet receivedPacket;
+    struct packet returnPacket;
 
     //Declare struct for parsed data from sensor 
-    GPS_data parsedData;
-
+    GPS_data parsedData = {0, 0, 0, 0};
+    
     //specify return packet
     i2c_setReturnPacket(&returnPacket, 4);
     while (1) {
 
         //Wait to receive a valid RMC message
-        receiveRMCMessage(&NMEABuffer);
-
-        //parse the NMEA string for GPS data
-        GPS_data parsedData = GPSparse(NMEABuffer, parsedData);
+        //receiveRMCMessage(&NMEABuffer);
+        parsedData = getGPS();
 
         //Set return data for master
         i2c_setReturnPacket(&returnPacket, 4);

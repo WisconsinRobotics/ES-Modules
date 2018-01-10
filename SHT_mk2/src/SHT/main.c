@@ -1,11 +1,11 @@
 /*	
- * GccApplication2.c
+ * main.c
  *
  * Created: 11/2/2016 8:11:54 PM
  * Author : Death
  */ 
-#define F_CPU 8000000UL
 
+#define F_CPU 8000000UL
 #define PING_ON 0x01
 #define PING_OFF 0x02
 #define GET_TEMP 0x03
@@ -17,48 +17,31 @@
 #include "i2c_packet.h"
 #include "SHT1x.h"
 
-
 int main(void) {
     DDRB = 0b00010011;
     DDRC = 0b00000010;
     DDRD = 0b11000111;
     PORTC &= ~(1<<PORTC1);
 
-    PORTD |= (1<<PORTD0);
-    _delay_ms(100);
-    PORTD ^= (1<<PORTD0);
-    _delay_ms(100);
-    PORTD ^= (1<<PORTD0);
-    _delay_ms(100);
-    PORTD ^= (1<<PORTD0);
-    _delay_ms(100);
-    PORTD ^= (1<<PORTD0);
-
     i2c_init(77);
     sei();
     int counter = 0;
     packet receivedPacket;
     packet returnPacket;
-    SHT1x sht;
 
     while (1) {
         returnPacket.cmd = GET_TEMP;
       
-        uint16_t tempC = sht.readTemperatureC();
+        uint16_t tempC = readTemperatureC();
         returnPacket.buffer[2] = (uint8_t) (tempC>>8);
         returnPacket.buffer[3] = (uint8_t) (tempC);
             
-        uint16_t humidity = sht.readHumidity();
+        uint16_t humidity = readHumidity();
         returnPacket.buffer[0] = (uint8_t) (humidity>>8);
         returnPacket.buffer[1] = (uint8_t) (humidity);
 
-        //returnPacket.buffer[0] = 0xAA;
-        //returnPacket.buffer[1] = 0xBB;
-        //returnPacket.buffer[2] = 0xCC;
-        //returnPacket.buffer[3] = 0xDD;
 
         i2c_setReturnPacket(&returnPacket, 4);
-
         i2c_checkForPackets();
 
         if(i2c_hasPacket()) {		
@@ -80,8 +63,6 @@ int main(void) {
                     break;
             }
         }
-
-        _delay_ms(100);
 
         counter++;
         if(counter>=1){

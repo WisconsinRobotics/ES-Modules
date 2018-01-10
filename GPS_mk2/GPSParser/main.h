@@ -7,7 +7,6 @@
 #include <stdio.h>
 #include <avr/wdt.h>
 #include "i2c_packet.h"
-#include "uart.h"
 #include "nmea.h"
 #include "uart.h"
 
@@ -27,10 +26,7 @@
 #define GET_SPEED 0x06
 #define GET_HEADING 0x07
 
-char NMEABuffer[100] = "$GPRMC,020106.2,V,0000.00000,N,00000.00000,W,000.18,300.6,150916,001.8,W,A*3D";
-char recvByte = ' ';
-struct packet receivedPacket;
-struct packet returnPacket;
+
 //various counters
 uint8_t alive_counter = 0;
 uint8_t cmd_counter = 0;

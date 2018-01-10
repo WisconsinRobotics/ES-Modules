@@ -1,10 +1,11 @@
-#include "garmin.h"
+#include "nmea.h"
+#include "uart.h"
 #include <string.h>
 
-GPS_data GPSparse (char *message, GPS_data parsedData) {
+GPS_data GPSparse (char *message) {
     char messageType[7];
     messageType[6] = '\0';  //needs to be there for strcmp
-
+    GPS_data parsedData;
     memcpy(messageType, message, 6 * sizeof(char));
 
     //Looking only for GPRMC type messages.
@@ -108,4 +109,11 @@ void receiveRMCMessage(char* NMEABuffer){
             valid_rmc = 1; 
     }
 
+}
+
+GPS_data getGPS(){
+    char NMEABuffer[100] = "$GPRMC,020106.2,V,0000.00000,N,00000.00000,W,000.18,300.6,150916,001.8,W,A*3D";
+    receiveRMCMessage(NMEABuffer);
+    GPS_data parsedData = GPSparse(NMEABuffer);
+    return parsedData;
 }

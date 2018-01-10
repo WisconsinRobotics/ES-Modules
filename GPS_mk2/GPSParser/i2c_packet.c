@@ -266,7 +266,7 @@ void i2c_checkForPackets()
 			static uint8_t numFails = 0;
 			numFails++;
 			//led_dataOut(numFails);
-			
+
 			byteQueue_flushQueue();
 			//led_dataOut(1);
 			//led_dataOut(pathTrace);
@@ -282,7 +282,6 @@ void i2c_checkForPackets()
 			_delay_ms(4000);
 			led_display(timedOut);
 			_delay_ms(4000);
-
 			for(int i = 0; i < RECEIVE_ARRAY_SIZE; i++)
 			{
 				led_display(receiveArray[i]);
@@ -433,7 +432,7 @@ ISR( TWI_vect )
     case TWIQUEUE_STX_DATA_ACK:           		// Data byte in TWDR has been transmitted; ACK has been received
 		 TWDR = *slaveDataToReturnCurrent;
 		 slaveDataToReturnCurrent++;
-      	 _delay_us(10); 
+      	 _delay_us(10);
          TWCR = (1<<TWEN)|                      // queue Interface enabled
              (1<<TWIE)|(1<<TWINT)|				// Enable queue Interupt and clear the flag to send byte
              (1<<TWEA)|(0<<TWSTA)|(0<<TWSTO)|	// 
@@ -481,8 +480,8 @@ ISR( TWI_vect )
 
     case TWIQUEUE_SRX_ADR_DATA_NACK:			// Previously addressed with own SLA+W; data has been received; NOT ACK has been returned
     case TWIQUEUE_SRX_GEN_DATA_NACK:			// Previously addressed with general call; data has been received; NOT ACK has been returned
-    case TWIQUEUE_STX_DATA_ACK_LAST_BYTE:		// Last data byte in TWDR has been transmitted (TWEA = “0”); ACK has been received
-//  case TWIQUEUE_NO_STATE						// No relevant state information available; queueNT = “0”
+    case TWIQUEUE_STX_DATA_ACK_LAST_BYTE:		// Last data byte in TWDR has been transmitted (TWEA = Â“0Â”); ACK has been received
+//  case TWIQUEUE_NO_STATE						// No relevant state information available; queueNT = Â“0Â”
     case TWIQUEUE_BUS_ERROR:					// Bus error due to an illegal START or STOP condition
       	 TWCR =   (1<<TWSTO)|(1<<TWINT);		//Recover from queue_BUS_ERROR, this will release the SDA and SCL pins thus enabling other devices to use the bus
       	 break;

@@ -7,7 +7,7 @@
   TWIqueue Status/Control register definitions
 ****************************************************************************/
 #include <stdlib.h>
-#define F_CPU 8000000UL
+#define F_CPU 1000000UL
 
 typedef struct packet
 {

@@ -179,15 +179,15 @@ void i2c_checkForPackets() {
                             } //else the parity doesn't match!
                         } //else the array doesn't end with a stop byte!
                     } //else one of the bytes timed out!
-					else {
-						static uint16_t delay = 0;
-						delay++;
-						if(delay >= 1) {
-							PORTD ^= 1 << PORTD0;
-							PORTD &= ~(1 << PORTD2);
-							delay = 0;
-						}
-					}
+                    else {
+                        static uint16_t delay = 0;
+                        delay++;
+                        if(delay >= 1) {
+                            PORTD ^= 1 << PORTD0;
+                            PORTD &= ~(1 << PORTD2);
+                            delay = 0;
+                        }
+                    }
                 } //The length byte was too long!
             } //else the length byte timed out!
         } //else the first byte was NOT the start Byte!

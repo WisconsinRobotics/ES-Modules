@@ -26,25 +26,19 @@ void pwm_init() {
     TCCR1B |= 0x03;
 }
 
-void drive_actuators(uint8_t actuators, uint8_t speed) {
+void drive_actuators(uint8_t payload) {
     //pwm duty cycle. 0% -> 0, 100% -> 256
-    //actuators is a bit field where the first 2 bits are a boolean
-    //describing whether or not that actuator moves.
-    switch (actuators) {
-        //Front Motors
-        case (1):
-            OCR0A = speed;
-            break;
-        
-        //Back Motors
-        case(2):
-            OCR1A = speed;
-            break;
+    uint8_t actuators = payload & actuator_mask;
+    uint8_t direction = (payload & direction_mask) >> 2;  
 
-        //Both Front & Back
-        case(3):
-            OCR0A = speed;
-            OCR1A = speed;
-            break;
+    if (direction == DIR_FORWARD) speed = FORWARD_PWM;
+    else if (direction == DIR_BACKWARD) speed = BACKWARD_PWM;
+    else speed = STOP_PWM;
+
+    if (actuators == BACK) OCR0A = speed;
+    else if (acutators == FRONT) OCR1A = speed;
+    else if (actuators == BOTH) {
+        ORC0A = speed;
+        ORC1A = speed;
     }
 }

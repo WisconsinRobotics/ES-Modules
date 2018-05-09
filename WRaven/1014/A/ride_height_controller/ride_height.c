@@ -1,8 +1,6 @@
 #include "ride_height.h"
 
-
-void pwm_init()
-{
+void pwm_init() {
     //Front PWM -> OC1A, OC1B
     //Back PWM -> OC0A, OC0B
 
@@ -50,4 +48,3 @@ void drive_actuators(uint8_t actuators, uint8_t speed) {
             break;
     }
 }
-

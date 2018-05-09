@@ -1,9 +1,9 @@
 /* 
  * Ride Height Controller.c 
  * Created: 4/2/2018 7:44:07 PM 
- * Author : alexander 
+ * Author : alexander
+ * Modified by: Dakota
  */   
-//launchpad >> this board >> motor controller via pwm //encoders  >>
 
 #define F_CPU 1000000UL
 #include <util/delay.h>
@@ -15,7 +15,8 @@
 
 #define PING_ON 0x01
 #define PING_OFF 0x02
-#define DriveActuator 0x07
+#define DRIVE_ACTUATORS 0x07
+#define TEST_CASE 0x08
 
 void init() {
     DDRD |= 1 << DDD0;
@@ -38,9 +39,14 @@ int main(void) {
         if(i2c_hasPacket()) {
             i2c_getPacket(&receivedPacket);
             switch(receivedPacket.cmd) {
-                case(DriveActuator): 
+                case(DRIVE_ACTUATORS): 
                     drive_actuators(receivedPacket.buffer[0], 
                                     receivedPacket.buffer[1]);
+                    break;
+
+                case(TEST_CASE):
+                    returnPacket.buffer[0] = 0xAA;
+                    returnPacket.buffer[1] = 0xBB;
                     break;
 			}
         }
@@ -51,8 +57,3 @@ int main(void) {
         }
     }
 }
-
-//things to do
-/*
-2. read feedback from actuator
-*/

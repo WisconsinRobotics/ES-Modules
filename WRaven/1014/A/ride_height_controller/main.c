@@ -30,28 +30,31 @@ void init() {
 int main(void) {
     init();
     uint16_t alive_counter = 0;
-    packet receivedPacket, returnPacket;
-    returnPacket.buffer[0] = { 0, 0 };
+    packet receivedPacket;
+	packet returnPacket;
+    returnPacket.buffer[0] = 0x00;
+	returnPacket.buffer[1] = 0x00;
+//	i2c_setReturnPacket(&returnPacket, 2);
 
+	uint16_t return_counter = 0;
     while (1) {
-        i2c_setReturnPacket(&returnPacket, 2);
         i2c_checkForPackets();
         if(i2c_hasPacket()) {
+			//i2c_setReturnPacket(&returnPacket, 2);
             i2c_getPacket(&receivedPacket);
+			PORTD |= 1<<PORTD2;
+			_delay_ms(100);
+			PORTD &= ~(1<<PORTD2);
             switch(receivedPacket.cmd) {
                 case(DRIVE_ACTUATORS): 
-                    drive_actuators(receivedPacket.buffer[0], 
-                                    receivedPacket.buffer[1]);
-                    break;
 
-                case(TEST_CASE):
-                    returnPacket.buffer[0] = 0xAA;
-                    returnPacket.buffer[1] = 0xBB;
+                    //drive_actuators(receivedPacket.buffer[0], 
+                    //                receivedPacket.buffer[1]);
                     break;
 			}
         }
         alive_counter++;
-        if (alive_counter >= 1000) {
+        if (alive_counter >= 5000) {
             PORTD ^= 1<< PORTD1;
             alive_counter = 0;
         }

@@ -8,6 +8,8 @@
 #include <util/delay.h>
 #include <util/atomic.h>
 
+volatile uint8_t i2c_has_data_flag = 0;
+
 struct queueData
 {
     uint8_t volatile head;
@@ -38,8 +40,8 @@ static uint8_t address_g = 1;
 
 //Places data at head, increments head
 static void queue_enQueue(uint8_t data) {
-    ATOMIC_BLOCK(ATOMIC_FORCEON) {
-        byteQueue.dataArray[byteQueue.head] = data;
+    //ATOMIC_BLOCK(ATOMIC_FORCEON) {
+	    byteQueue.dataArray[byteQueue.head] = data;
         byteQueue.head++;
         if(byteQueue.head == BYTE_ARRAY_SIZE)
             byteQueue.head = 0;
@@ -52,35 +54,44 @@ static void queue_enQueue(uint8_t data) {
             if(byteQueue.tail == BYTE_ARRAY_SIZE)
                 byteQueue.tail = 0;
         }
-    }
+    //}
 }
 
 //Returns data at tail, increments tail
 static uint8_t byteQueue_deQueue() {
-    if(byteQueue.numData == 0)
-        return 0;
+	cli();
+	if(byteQueue.numData == 0){
+		sei();
+		return 0;
+	}
     byteQueue.numData--;
 
     uint8_t dataToReturn = byteQueue.dataArray[byteQueue.tail];
     byteQueue.tail++;
     if(byteQueue.tail == BYTE_ARRAY_SIZE)
         byteQueue.tail = 0;
-
+	sei();
     return dataToReturn;
 }
 
 static uint8_t i2c_getByte() {
-    return byteQueue_deQueue();
+	cli();
+	uint8_t data = byteQueue_deQueue();
+    sei();
+	return data;
 }
 
 //returns how many items are in the queue
 static volatile uint8_t i2c_hasData() {
-    return byteQueue.numData;
+	cli();
+	uint8_t data = byteQueue.numData;
+	sei();
+	return data;
 }
 
 static void byteQueue_flushQueue() {
     //Re-Initialize byteQueueVariables
-    byteQueue.head = 0;
+	byteQueue.head = 0;
     byteQueue.tail = 0;
     byteQueue.numData = 0;
     byteQueue.overflowFlag = 0;
@@ -94,10 +105,10 @@ static void packetQueue_flushQueue() {
 }
 
 static uint8_t i2c_GetByteWithTimeout(uint8_t *destination, uint8_t timeout_ms) {
-    while (timeout_ms != 0) {
+	while (timeout_ms != 0) {
         if(byteQueue.numData) {    //if there is data in the packet?
             *destination = byteQueue_deQueue();	//grabs the next btye after the start btye. this is the length
-            return 1;
+		    return 1;
         }
         timeout_ms--;
         _delay_ms(1);
@@ -179,15 +190,6 @@ void i2c_checkForPackets() {
                             } //else the parity doesn't match!
                         } //else the array doesn't end with a stop byte!
                     } //else one of the bytes timed out!
-                    else {
-                        static uint16_t delay = 0;
-                        delay++;
-                        if(delay >= 1) {
-                            PORTD ^= 1 << PORTD0;
-                            PORTD &= ~(1 << PORTD2);
-                            delay = 0;
-                        }
-                    }
                 } //The length byte was too long!
             } //else the length byte timed out!
         } //else the first byte was NOT the start Byte!
@@ -217,7 +219,7 @@ uint8_t i2c_getPacket(struct packet *packetDestination) {
 }
 
 void i2c_setReturnPacket(const struct packet * const packetPointer, uint8_t numDataBytes) {
-    ATOMIC_BLOCK(ATOMIC_FOCEON){
+    //ATOMIC_BLOCK(ATOMIC_FORCEON){
         returnData[0] = START;
         returnData[1] = numDataBytes+3;
         returnData[2] = packetPointer->cmd;
@@ -233,7 +235,7 @@ void i2c_setReturnPacket(const struct packet * const packetPointer, uint8_t numD
 
         returnData[i] = parityByte;
         returnData[i+1] = STOP;
-    }
+    //}
 }
 
 ISR(TIMER2_OVF_vect) {
@@ -297,7 +299,8 @@ ISR( TWI0_vect ) {
 
         case TWIQUEUE_SRX_ADR_DATA_ACK:             // Previously addressed with own SLA+W; data has been received; ACK has been returned
         case TWIQUEUE_SRX_GEN_DATA_ACK:             // Previously addressed with general call; data has been received; ACK has been returned
-            queue_enQueue(TWDR0);      
+            //i2c_has_data_flag = 1;
+			queue_enQueue(TWDR0);      
                                                         // Reset the queue Interrupt to wait for a new event.
             TWCR0 = (1<<TWEN)|                          // queue Interface enabled
                     (1<<TWIE)|(1<<TWINT)|               // Enable queue Interrupt and clear the flag to send byte

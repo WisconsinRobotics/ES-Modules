@@ -34,7 +34,6 @@ int main(void) {
     while (1) {
         i2c_checkForPackets();
         if(i2c_hasPacket()) {
-            //i2c_setReturnPacket(&returnPacket, 2);
             i2c_getPacket(&receivedPacket);
             PORTD |= 1<<PORTD2;
             _delay_ms(50);

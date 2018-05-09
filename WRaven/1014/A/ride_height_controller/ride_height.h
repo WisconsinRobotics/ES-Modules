@@ -8,6 +8,8 @@
 #define DIR_STOP 0
 #define DIR_FORWARD 1
 #define DIR_BACKWARD 2
+#define BACK_ACTUATOR 0
+#define FRONT_ACTUATOR 1
 const uint8_t actuator_mask = 0x03;
 const uint8_t direction_mask = 0x0C;
 void pwm_init();

@@ -39,14 +39,14 @@ int main(void) {
             _delay_ms(50);
             PORTD &= ~(1<<PORTD2);
             switch(receivedPacket.cmd) {
-                case(DRIVE_ACTUATORS): 
+                case(DRIVE_ACTUATORS):
                     drive_actuators(receivedPacket.buffer[0]);
                     break;
                 case(PING_ON):
-                    PORTD |= PORTD0;
+                    PORTD |= (1<<PORTD0);
                     break;
                 case(PING_OFF):
-                    PORTD &= ~PORTD0;
+                    PORTD &= ~(1<<PORTD0);
                     break;
             }
         }

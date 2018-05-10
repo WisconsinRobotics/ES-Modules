@@ -49,7 +49,7 @@ static void queue_enQueue(uint8_t data) {
         byteQueue.tail++;
         if(byteQueue.tail == BYTE_ARRAY_SIZE)
             byteQueue.tail = 0;
-    }
+	}
 }
 
 //Returns data at tail, increments tail
@@ -67,20 +67,28 @@ static uint8_t byteQueue_deQueue() {
 }
 
 static uint8_t i2c_getByte() {
-    return byteQueue_deQueue();
+	cli();
+    uint8_t data = byteQueue_deQueue();
+	sei();
+	return data;
 }
 
 //returns how many items are in the queue
 static volatile uint8_t i2c_hasData() {
-    return byteQueue.numData;
+    cli();
+	uint8_t data = byteQueue.numData;
+	sei();
+	return data;
 }
 
 static void byteQueue_flushQueue() {
     //Re-Initialize byteQueueVariables
-    byteQueue.head = 0;
+    cli();
+	byteQueue.head = 0;
     byteQueue.tail = 0;
     byteQueue.numData = 0;
     byteQueue.overflowFlag = 0;
+	sei();
 }
 
 static void packetQueue_flushQueue() {
@@ -91,14 +99,17 @@ static void packetQueue_flushQueue() {
 }
 
 static uint8_t i2c_GetByteWithTimeout(uint8_t *destination, uint8_t timeout_ms) {
-    while (timeout_ms != 0) {
+    cli();
+	while (timeout_ms != 0) {
         if(byteQueue.numData) {    //if there is data in the packet?
             *destination = byteQueue_deQueue();	//grabs the next btye after the start btye. this is the length
-            return 1;
+            sei();
+			return 1;
         }
         timeout_ms--;
         _delay_ms(1);
     }
+	sei();
     return 0;
 }
 
@@ -127,9 +138,8 @@ void i2c_init(uint8_t address) {
 }
 
 void i2c_checkForPackets() {
-    cli();
     if(i2c_hasData()) {
-        uint8_t success = 0;
+		uint8_t success = 0;
         uint8_t receiveArray[RECEIVE_ARRAY_SIZE];
         for(int i = 0; i < RECEIVE_ARRAY_SIZE; i++)	//sets recive array to all 0s
             receiveArray[i] = 0x00;
@@ -185,7 +195,6 @@ void i2c_checkForPackets() {
             numFails++;
         }
     }
-    sei();
 }
 
 uint8_t i2c_hasPacket() {
@@ -286,7 +295,7 @@ ISR( TWI0_vect ) {
         case TWIQUEUE_SRX_ADR_DATA_ACK:             // Previously addressed with own SLA+W; data has been received; ACK has been returned
         case TWIQUEUE_SRX_GEN_DATA_ACK:             // Previously addressed with general call; data has been received; ACK has been returned
             queue_enQueue(TWDR0);      
-                                                        // Reset the queue Interrupt to wait for a new event.
+                                            // Reset the queue Interrupt to wait for a new event.
             TWCR0 = (1<<TWEN)|                          // queue Interface enabled
                     (1<<TWIE)|(1<<TWINT)|               // Enable queue Interrupt and clear the flag to send byte
                     (1<<TWEA)|(0<<TWSTA)|(0<<TWSTO)|    // Send ACK after next reception

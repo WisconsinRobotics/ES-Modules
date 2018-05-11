@@ -35,6 +35,7 @@ void drive_actuators(uint8_t payload) {
 		front_speed = STOP_PWM;
 		back_speed = STOP_PWM;
 	}
+
     if (actuators & (1<<BACK_ACTUATOR)) OCR0A = back_speed;
     if (actuators & (1<<FRONT_ACTUATOR)) OCR1A = front_speed;
 }

@@ -13,47 +13,62 @@
 #include <avr/io.h>
 #include "ride_height.h"
 
-#define PING_ON 0x01
-#define PING_OFF 0x02
-#define DRIVE_ACTUATORS 0x07
-
 void init() {
     DDRD |= 1 << DDD0;
     DDRD |= 1 << DDD1;
     DDRD |= 1 << DDD2;
-    i2c_init(0xAA);
+    i2c_init(I2C_ADDR);
     pwm_init();
     sei();
+    drive_actuators((DIR_STOP<<2) |
+                    (1<<BACK_ACTUATOR) |
+                    (1<<FRONT_ACTUATOR));
+}
+
+void display_cmd(){
+    LED_CMD_ON;
+    _delay_ms(LED_FLASH_TIME);
+    LED_CMD_OFF;
+}
+
+void display_ping(){
+    LED_PING_ON;
+    _delay_ms(LED_FLASH_TIME);
+    LED_PING_OFF;
+}
+
+void display_alive(){
+    static uint16_t alive_counter = 0;
+    if (alive_counter >= LED_ALIVE_FREQ) {
+        LED_ALIVE_TOGGLE;
+        alive_counter = 0;
+    }
+    alive_counter++;
 }
 
 int main(void) {
     init();
-    uint16_t alive_counter = 0;
     packet receivedPacket;
-
     while (1) {
+        display_alive();
         i2c_checkForPackets();
         if(i2c_hasPacket()) {
+            display_cmd();
             i2c_getPacket(&receivedPacket);
-            PORTD |= 1<<PORTD2;
-            _delay_ms(50);
-            PORTD &= ~(1<<PORTD2);
             switch(receivedPacket.cmd) {
-                case(DRIVE_ACTUATORS):
+                case(CMD_DRIVE_ACTUATORS):
                     drive_actuators(receivedPacket.buffer[0]);
                     break;
-                case(PING_ON):
-                    PORTD |= (1<<PORTD0);
+                case(CMD_PING_ON):
+                    LED_PING_ON;
                     break;
-                case(PING_OFF):
-                    PORTD &= ~(1<<PORTD0);
+                case(CMD_PING_OFF):
+                    LED_PING_OFF;
+                    break;
+                case(CMD_PING):
+                    display_ping();
                     break;
             }
-        }
-        alive_counter++;
-        if (alive_counter >= 5000) {
-            PORTD ^= 1<< PORTD1;
-            alive_counter = 0;
         }
     }
 }

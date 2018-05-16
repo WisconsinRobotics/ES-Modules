@@ -3,10 +3,15 @@
 void pwm_init() {
     //Front PWM -> OC1A, OC1B
     //Back PWM -> OC0A, OC0B
-    DDRB |= 0x02;                             //PB1 and PD6 are the PWM pins OC
+    DDRB |= 0x02; 
+	 DDRB |= 0x04;                             //PB1 and PD6 are the PWM pins OC
+												//PB2andPD5aretheminuspins
     DDRD |= 0x40;
+	DDRD |= 0x20;
     OCR0A = 128;                              //set PWM for 50% duty cycle
     OCR1A = 32768;
+	    OCR0B = 0;                              //set PWM for 50% duty cycle
+	    OCR1B = 0;
     TCCR0A |= (1 << COM0A1);                  //set none-inverting mode
     TCCR1A |= (1 << COM0A1);                  //timer counter control register
     TCCR0A |= (1 << WGM01) | (1 << WGM00);    //set fast PWM Mode

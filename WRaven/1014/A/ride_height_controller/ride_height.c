@@ -27,20 +27,24 @@ void drive_actuators(uint8_t payload) {
     uint8_t direction = (payload & direction_mask) >> 2;  
 	uint16_t front_speed = STOP_PWM;
 	uint8_t back_speed = STOP_PWM;
+	
+	uint8_t drive_front = actuators & (1<<FRONT_ACTUATOR);
+	uint8_t drive_back = actuators & (1<<BACK_ACTUATOR);
 
     if (direction == DIR_FORWARD) { 
-		front_speed = FRONT_FORWARD_PWM;
-		back_speed = BACK_FORWARD_PWM;
+		
+		if (drive_front) front_speed = FRONT_FORWARD_PWM;
+		if (drive_back) back_speed = BACK_FORWARD_PWM;
 	}
     else if (direction == DIR_BACKWARD){
-		 front_speed = FRONT_BACKWARD_PWM;
-		 back_speed = BACK_BACKWARD_PWM;
+		 if (drive_front) front_speed = FRONT_BACKWARD_PWM;
+		 if (drive_back) back_speed = BACK_BACKWARD_PWM;
 	}
     else {
 		front_speed = STOP_PWM;
 		back_speed = STOP_PWM;
 	}
 
-    if (actuators & (1<<BACK_ACTUATOR)) OCR0A = back_speed;
-    if (actuators & (1<<FRONT_ACTUATOR)) OCR1A = front_speed;
+     OCR0A = back_speed;
+     OCR1A = front_speed;
 }

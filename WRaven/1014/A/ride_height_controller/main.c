@@ -20,9 +20,7 @@ void init() {
     i2c_init(I2C_ADDR);
     pwm_init();
     sei();
-    drive_actuators((DIR_STOP<<2) |
-                    (1<<BACK_ACTUATOR) |
-                    (1<<FRONT_ACTUATOR));
+    drive_actuators(0);
 }
 
 void display_cmd(){
@@ -65,9 +63,9 @@ int main(void) {
                 case(CMD_PING_OFF):
                     LED_PING_OFF;
                     break;
-                case(CMD_PING):
-                    display_ping();
-                    break;
+                //case(CMD_PING):
+                    //display_ping();
+                    //break;
             }
         }
     }

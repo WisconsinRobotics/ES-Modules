@@ -28,12 +28,12 @@ void drive_actuators(uint8_t payload) {
 	uint16_t front_speed = STOP_PWM;
 	uint8_t back_speed = STOP_PWM;
     
-    if (front_dir == DOWN) front_speed = FRONT_DOWN_PWM;
-    else if (front_dir == UP) front_speed = FRONT_UP_PWM;
+    if (front_dir == ACTUATOR_DOWN) front_speed = FRONT_DOWN_PWM;
+    else if (front_dir == ACTUATOR_UP) front_speed = FRONT_UP_PWM;
     else front_speed = STOP_PWM;
 
-    if (front_dir == DOWN) front_speed = FRONT_DOWN_PWM;
-    else if (front_dir == UP) front_speed = FRONT_UP_PWM;
+    if (back_dir == ACTUATOR_DOWN) front_speed = FRONT_DOWN_PWM;
+    else if (back_dir == ACTUATOR_UP) front_speed = FRONT_UP_PWM;
     else back_speed = STOP_PWM;
 
      OCR0A = back_speed;

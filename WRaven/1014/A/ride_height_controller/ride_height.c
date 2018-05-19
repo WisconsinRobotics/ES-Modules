@@ -23,27 +23,18 @@ void pwm_init() {
 void drive_actuators(uint8_t payload) {
     //pwm duty cycle. 0% -> 0, 100% -> 256
     //payload = direction_bit_1, direction_bit_0, actuator_bit_1, actuator_bit_0 
-    uint8_t actuators = payload & actuator_mask;
-    uint8_t direction = (payload & direction_mask) >> 2;  
+    uint8_t front_dir = (payload & front_dir_mask)>>2;
+    uint8_t back_dir = payload & back_dir_mask;
 	uint16_t front_speed = STOP_PWM;
 	uint8_t back_speed = STOP_PWM;
-	
-	uint8_t drive_front = actuators & (1<<FRONT_ACTUATOR);
-	uint8_t drive_back = actuators & (1<<BACK_ACTUATOR);
+    
+    if (front_dir == DOWN) front_speed = FRONT_DOWN_PWM;
+    else if (front_dir == UP) front_speed = FRONT_UP_PWM;
+    else front_speed = STOP_PWM;
 
-    if (direction == DIR_FORWARD) { 
-		
-		if (drive_front) front_speed = FRONT_FORWARD_PWM;
-		if (drive_back) back_speed = BACK_FORWARD_PWM;
-	}
-    else if (direction == DIR_BACKWARD){
-		 if (drive_front) front_speed = FRONT_BACKWARD_PWM;
-		 if (drive_back) back_speed = BACK_BACKWARD_PWM;
-	}
-    else {
-		front_speed = STOP_PWM;
-		back_speed = STOP_PWM;
-	}
+    if (front_dir == DOWN) front_speed = FRONT_DOWN_PWM;
+    else if (front_dir == UP) front_speed = FRONT_UP_PWM;
+    else back_speed = STOP_PWM;
 
      OCR0A = back_speed;
      OCR1A = front_speed;
